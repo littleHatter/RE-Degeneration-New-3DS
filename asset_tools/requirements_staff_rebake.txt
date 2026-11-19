@@ -1,0 +1,4 @@
+numpy==2.3.5
+scipy==1.17.0
+texture2ddecoder==1.0.6
+unicorn==2.1.4
