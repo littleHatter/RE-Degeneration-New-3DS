@@ -4,7 +4,7 @@
 
 Based on the MGSM compatibility framework and the separate Need for Speed Undercover, Pandemonium and Project Gotham Racing ports.
 
-This is a hybridisation of the N-Gage 2.0 and iOS versions of Resident Evil Degeneration, using assets converted from the iOS version to cover the gaps made by the N-Gage 2.0's XOR-masked bit manipulation.
+This is a hybridisation of the N-Gage 2.0, BREW and iOS versions of Resident Evil Degeneration, using assets converted from the iOS and BREW versions to cover the gaps made by the N-Gage 2.0's XOR-masked bit manipulation.
 
 It is likely to not be perfectly identical to either version, but the whole game is completable from start to finish without major issue.
 
@@ -12,7 +12,7 @@ It is likely to not be perfectly identical to either version, but the whole game
 
 Requires a **New Nintendo 3DS / New 3DS XL / New 2DS XL** with the Homebrew Launcher. Merge the included `3ds` folder into the SD card root. Launch Resident Evil Degeneration. Preserve `3ds/res_degene/user` when updating: it contains your saves. No saves are included.
 
-Releases requires your own matching N-Gage game package and iOS donor copy; see PREPARING_GAME_DATA.md. The GitHub source package contains compatibility source, artwork and restoration patches, with no complete game data files.
+Releases requires your own matching N-Gage game package, BREW archive and iOS donor copy; see PREPARING_GAME_DATA.md. The GitHub source package contains compatibility source, artwork and restoration patches, with no complete game data files.
 
 ## Controls
 
