@@ -1,0 +1,10 @@
+{
+  "version": "1.1",
+  "title": "Resident Evil Degeneration",
+  "description": "Resident Evil Degeneration",
+  "data_root": "sdmc:/3ds/res_degene/",
+  "normal_progression": true,
+  "runtime_sources_identical_to_completed_trial": true,
+  "3dsx_sha256": "623b062ff7592a5d07586893e9fff243fff4380713e59de07c74a97cd1961a4b",
+  "campaign_hardware_test": "completed without errors, reported by user"
+}

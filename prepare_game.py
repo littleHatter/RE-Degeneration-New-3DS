@@ -71,7 +71,9 @@ def ngage_files(path):
    except lzma.LZMAError:pass
  return {sha(b):b for b in out}
 
-def donor_archive(path,expected):
+def donor_archive(path,expected,label="iOS"):
+ if not path.is_dir() and path.suffix.lower()==".rar":
+  raise ValueError("Extract the BREW RAR first, then pass its ResidentEvil/main.dz using --brew.")
  if path.is_dir():candidates=list(path.rglob('main.dz'))
  else:candidates=[path]
  for p in candidates:
@@ -84,10 +86,10 @@ def donor_archive(path,expected):
   else:
    b=p.read_bytes()
    if sha(b)==expected:return b
- raise ValueError('iOS donor does not match the supported baseline version')
+ raise ValueError(label+' donor does not match the supported baseline version')
 
-def reconstruct(ngage,ios,recipe):
- raw=ngage_files(ngage);archives={'ios':donor_archive(ios,recipe['ios_sha256'])}
+def reconstruct(ngage,ios,brew,recipe):
+ raw=ngage_files(ngage);archives={'ios':donor_archive(ios,recipe['ios_sha256']),'brew':donor_archive(brew,recipe['brew_sha256'],'BREW')}
  native=recipe['ngage_main_sha256']
  if native not in raw:raise ValueError('N-Gage main archive does not match the supported baseline version')
  archives['ngage']=raw[native];cache={}
@@ -120,10 +122,10 @@ def reconstruct(ngage,ios,recipe):
  return result
 
 def main():
- ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--ngage',required=True,type=Path,help='N-Gage package or extracted game directory');ap.add_argument('--ios',required=True,type=Path,help='matching iOS IPA, extracted app directory, or main.dz');ap.add_argument('--output',type=Path,default=Path(__file__).resolve().parent/'3ds/res_degene/game');ap.add_argument('--verify-only',action='store_true');a=ap.parse_args()
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--ngage',required=True,type=Path,help='N-Gage package or extracted game directory');ap.add_argument('--ios',required=True,type=Path,help='matching iOS IPA, extracted app directory, or main.dz');ap.add_argument('--brew',required=True,type=Path,help='extracted verified BREW main.dz, directory, or ZIP');ap.add_argument('--output',type=Path,default=Path(__file__).resolve().parent/'3ds/res_degene/game');ap.add_argument('--verify-only',action='store_true');a=ap.parse_args()
  recipe=json.loads(zlib.decompress((Path(__file__).resolve().parent/'preparation/restoration_recipe.json.zlib').read_bytes()))
  try:
-  files=reconstruct(a.ngage,a.ios,recipe)
+  files=reconstruct(a.ngage,a.ios,a.brew,recipe)
   if not a.verify_only:
    a.output.parent.mkdir(parents=True,exist_ok=True)
    # Validate all inputs and outputs before replacing any files. Saves live outside game/.

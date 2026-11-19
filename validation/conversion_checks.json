@@ -1,0 +1,310 @@
+{
+  "areas": [
+    {
+      "area": "dutyfreeeast",
+      "baseline_entities": 620,
+      "new_entities": 621,
+      "BREW_entities": 621,
+      "gameplay_roots_preserved": 36,
+      "tested_parameters_preserved": 4,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 0,
+      "models_verified": 109,
+      "templates_verified": 10,
+      "resolved": {
+        "renderables": 672,
+        "coloured_renderables": 649,
+        "colour_entries": 7185,
+        "template_instances": 24,
+        "colliders": 46
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "72bd9f8e84d449a4203abab4158e73705822884718c85ce5c26a664d4b55cb40",
+      "after_sha256": "5af94183a9bdc20f615e491729481d950a59023152536adb455b32b8fda4c9ea"
+    },
+    {
+      "area": "dutyfreewest",
+      "baseline_entities": 367,
+      "new_entities": 367,
+      "BREW_entities": 367,
+      "gameplay_roots_preserved": 27,
+      "tested_parameters_preserved": 2,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 1,
+      "models_verified": 83,
+      "templates_verified": 6,
+      "resolved": {
+        "renderables": 392,
+        "coloured_renderables": 384,
+        "colour_entries": 5147,
+        "template_instances": 14,
+        "colliders": 34
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "1a672ea94a6bc3de9d60f321dd14f8c04631f13599eb676a25417e63bbf5dad8",
+      "after_sha256": "2d6b7371a912304242660270a4dadc680762f9e1eb7deb8d7125951bc1d8db02"
+    },
+    {
+      "area": "generatortunnels",
+      "baseline_entities": 408,
+      "new_entities": 404,
+      "BREW_entities": 404,
+      "gameplay_roots_preserved": 21,
+      "tested_parameters_preserved": 0,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 10,
+      "models_verified": 76,
+      "templates_verified": 6,
+      "resolved": {
+        "renderables": 740,
+        "coloured_renderables": 740,
+        "colour_entries": 6233,
+        "template_instances": 41,
+        "colliders": 23
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "7b48be1c5989685433dd4aef3fc51a9d9585cc94733d0e63b3dac0f7035e29aa",
+      "after_sha256": "6bb06f6113ece3c160bed34f1e3264d7ba5dcd7a4fa53a1b1247142daf29ef09"
+    },
+    {
+      "area": "infirmary",
+      "baseline_entities": 925,
+      "new_entities": 872,
+      "BREW_entities": 869,
+      "gameplay_roots_preserved": 84,
+      "tested_parameters_preserved": 22,
+      "baseline_only_retained": [
+        {
+          "id": "eade1543",
+          "reasons": [
+            "preserved resource/component reference"
+          ]
+        },
+        {
+          "id": "eade1544",
+          "reasons": [
+            "preserved resource/component reference"
+          ]
+        },
+        {
+          "id": "b0062d62",
+          "reasons": [
+            "preserved resource/component reference"
+          ]
+        }
+      ],
+      "removed_reconstruction_only_roots": 67,
+      "models_verified": 131,
+      "templates_verified": 5,
+      "resolved": {
+        "template_instances": 23,
+        "renderables": 766,
+        "coloured_renderables": 753,
+        "colour_entries": 7858,
+        "colliders": 89
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "e802dc9ec392544860ad4797f7ca0abda2e562830019a3bb7186fadba212004a",
+      "after_sha256": "5c0b87cf8622e93c94c6b9033e465ec23486f5db2e376c563130b020910e6108"
+    },
+    {
+      "area": "planecargo",
+      "baseline_entities": 147,
+      "new_entities": 147,
+      "BREW_entities": 147,
+      "gameplay_roots_preserved": 8,
+      "tested_parameters_preserved": 0,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 0,
+      "models_verified": 32,
+      "templates_verified": 3,
+      "resolved": {
+        "renderables": 211,
+        "coloured_renderables": 211,
+        "colour_entries": 1919,
+        "template_instances": 12,
+        "colliders": 8
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "5a4b0b0c9d9051b4e9ce66e02ac250da83bbf3c954d4812a52bdb6def788fe11",
+      "after_sha256": "d87824328aa0e5203ec20373ee78303f2510d9fb4b89730ed8be0333d5d702af"
+    },
+    {
+      "area": "planecrashed",
+      "baseline_entities": 462,
+      "new_entities": 465,
+      "BREW_entities": 465,
+      "gameplay_roots_preserved": 12,
+      "tested_parameters_preserved": 0,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 11,
+      "models_verified": 52,
+      "templates_verified": 6,
+      "resolved": {
+        "renderables": 677,
+        "coloured_renderables": 677,
+        "colour_entries": 7591,
+        "template_instances": 25,
+        "colliders": 12
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "b228f023b902f4a6c2aaa4306038ae28219aaae3951efc282d54378dc69f2ca0",
+      "after_sha256": "18d3c6c694a38b93325dbb4e71cae512c4428f81822f052be56f956f1cb104af"
+    },
+    {
+      "area": "planeentrance",
+      "baseline_entities": 194,
+      "new_entities": 190,
+      "BREW_entities": 190,
+      "gameplay_roots_preserved": 5,
+      "tested_parameters_preserved": 0,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 6,
+      "models_verified": 54,
+      "templates_verified": 2,
+      "resolved": {
+        "renderables": 162,
+        "coloured_renderables": 162,
+        "colour_entries": 1831,
+        "template_instances": 5,
+        "colliders": 5
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "048bb4def2da2cfd39102a4911f56a327974294dab3217e3622aad790dbced34",
+      "after_sha256": "5c55675092b12e6c7dd1caf87cd71553e61acbaa12c92fc99fa20aa7439e783a"
+    },
+    {
+      "area": "planeexit",
+      "baseline_entities": 432,
+      "new_entities": 429,
+      "BREW_entities": 429,
+      "gameplay_roots_preserved": 31,
+      "tested_parameters_preserved": 6,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 8,
+      "models_verified": 95,
+      "templates_verified": 6,
+      "resolved": {
+        "renderables": 416,
+        "coloured_renderables": 413,
+        "colour_entries": 4425,
+        "template_instances": 24,
+        "colliders": 38
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "0b4b17263d86818ea5210e1cdd91aac320fb0d2ff017603ddef2ab6564687ec6",
+      "after_sha256": "31e6955ae11a08254e03d716fa170b2c5128fd38310f862381e2310f7338fd09"
+    },
+    {
+      "area": "security",
+      "baseline_entities": 816,
+      "new_entities": 814,
+      "BREW_entities": 812,
+      "gameplay_roots_preserved": 52,
+      "tested_parameters_preserved": 13,
+      "baseline_only_retained": [
+        {
+          "id": "43d921dc",
+          "reasons": [
+            "literal script reference"
+          ]
+        },
+        {
+          "id": "43d921dd",
+          "reasons": [
+            "literal script reference"
+          ]
+        }
+      ],
+      "removed_reconstruction_only_roots": 6,
+      "models_verified": 127,
+      "templates_verified": 5,
+      "resolved": {
+        "renderables": 782,
+        "coloured_renderables": 778,
+        "colour_entries": 7859,
+        "template_instances": 21,
+        "colliders": 57
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "68e273103ffe9454d2937bbe27118c213b89d5aeedb754def6113213799611ee",
+      "after_sha256": "195a5c253553f24a839ed770f58392b0bf388ed7a5fc920523ad8e8b19a71edc"
+    },
+    {
+      "area": "staffarea",
+      "baseline_entities": 489,
+      "new_entities": 454,
+      "BREW_entities": 454,
+      "gameplay_roots_preserved": 27,
+      "tested_parameters_preserved": 4,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 43,
+      "models_verified": 124,
+      "templates_verified": 4,
+      "resolved": {
+        "renderables": 406,
+        "coloured_renderables": 402,
+        "colour_entries": 4600,
+        "template_instances": 9,
+        "colliders": 30
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "b435615909718bbf69dc5fe8a8245c8ef98af94dc54c84005f174ee9ee8ea575",
+      "after_sha256": "bd7c46f21ce113aa05fed5a63a84992b87f463f528663024f7e194c93eff890b"
+    },
+    {
+      "area": "vipplane",
+      "baseline_entities": 214,
+      "new_entities": 209,
+      "BREW_entities": 209,
+      "gameplay_roots_preserved": 13,
+      "tested_parameters_preserved": 0,
+      "baseline_only_retained": [],
+      "removed_reconstruction_only_roots": 6,
+      "models_verified": 41,
+      "templates_verified": 6,
+      "resolved": {
+        "renderables": 283,
+        "coloured_renderables": 283,
+        "colour_entries": 4042,
+        "template_instances": 28,
+        "colliders": 13
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "d86891e114ff6f1ed49308a814365c2f63a76750b2bcf3b20273c13254e715f9",
+      "after_sha256": "ea324ec0ce772d76894fdd2eb3f85af73fdc19842a6668e666cab08802dc1c58"
+    },
+    {
+      "area": "warehouse",
+      "baseline_entities": 407,
+      "new_entities": 406,
+      "BREW_entities": 405,
+      "gameplay_roots_preserved": 13,
+      "tested_parameters_preserved": 0,
+      "baseline_only_retained": [
+        {
+          "id": "541a4906",
+          "reasons": [
+            "baseline gameplay entity"
+          ]
+        }
+      ],
+      "removed_reconstruction_only_roots": 4,
+      "models_verified": 58,
+      "templates_verified": 2,
+      "resolved": {
+        "renderables": 382,
+        "coloured_renderables": 381,
+        "colour_entries": 4374,
+        "template_instances": 3,
+        "colliders": 20
+      },
+      "nonentity_records_unchanged": true,
+      "before_sha256": "f80e4e675acf9a1ad6581712c88c219db676cd22b10433a7fa73a5d5e548d939",
+      "after_sha256": "3ddce13a0c04e7246404f27a72ea3e3c2aba470fe95494dab8643d1bcc6ad27d"
+    }
+  ],
+  "scripts_checked": 20,
+  "scripts_changed": false,
+  "other_game_files_changed": false
+}

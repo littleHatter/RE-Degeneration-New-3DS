@@ -783,5 +783,506 @@
         "embedded_lua": []
       }
     ]
+  },
+  "brew": {
+    "sha256": "a687a89ce178ca730926d585e031d2afaf60b3424792090fd62c965bd78d1898",
+    "entries": [
+      {
+        "path": "console.bin",
+        "offset": 3598,
+        "decoded_bytes": 17295,
+        "decoded_sha256": "65d5be70646f46e3e5235f4793b81716f3e33f2607c58be7d3c6e546cf1fdc32",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/english.dat",
+        "offset": 9409,
+        "decoded_bytes": 46356,
+        "decoded_sha256": "5aa45968cf5aa8021e76848ec3f8d9d0835d25a611e0df515d09a5449c1231c3",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/localisehashes.dat",
+        "offset": 25823,
+        "decoded_bytes": 6894,
+        "decoded_sha256": "dd376629132158be3325fd911c1998d4891ffb9b53a4e4b05454e365a64cb05c",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/loading_wav.group.bin",
+        "offset": 30311,
+        "decoded_bytes": 30232,
+        "decoded_sha256": "b3211dce98d71a05e9e0d74058337ada7cf71aa6e27a535d2469fe682b150b08",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/fixed_wav.group.bin",
+        "offset": 39050,
+        "decoded_bytes": 912035,
+        "decoded_sha256": "cf0d5295a24ce9746b45bc6b962b4f9b380137815a52d6c6036e1a04f8a302f9",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/ingame.luc",
+        "offset": 466007,
+        "decoded_bytes": 4295,
+        "decoded_sha256": "052a84c162951411efb841417b775d9fe13712b32789735b241349d464789dea",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/splash.group.bin",
+        "offset": 467242,
+        "decoded_bytes": 101406,
+        "decoded_sha256": "232861f64dc28506413df277c9aad079a3b13bfba7de8a6dcf0b780ecba10a52",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/frontend_wav.group.bin",
+        "offset": 476714,
+        "decoded_bytes": 157140,
+        "decoded_sha256": "6f446cacad2b2b0a596ae301667c22afd3cc80fdbb9e1b099bba11429f735ca2",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/characters/characters_main.group.bin",
+        "offset": 530180,
+        "decoded_bytes": 279438,
+        "decoded_sha256": "c401452e4d205e91e4a59e24445f84e403dbd3cccb998615659812cdbb18a739",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/designobjects/designobjects.group.bin",
+        "offset": 665333,
+        "decoded_bytes": 772,
+        "decoded_sha256": "9fde97fa410684f56adf16c07f0f9f71e6210100dc6e98880a8021f546103973",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/mercenarymode.group.bin",
+        "offset": 665740,
+        "decoded_bytes": 99,
+        "decoded_sha256": "5474a7cf1a70adb4de8de0622ea26980217f2b3fe1e6a4c9c6e262217c53c215",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/mercenarymode.luc",
+        "offset": 665838,
+        "decoded_bytes": 4177,
+        "decoded_sha256": "dce9bf4860ebc1fc851c96cae4885d8da3623647a732ce816f6b266ebe267b7b",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/storymode.group.bin",
+        "offset": 667727,
+        "decoded_bytes": 2558,
+        "decoded_sha256": "563b4580f807ea068ff41f59f2cb4aad746795bd4975db7e1716b6f7de1a3b41",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/storymissions.luc",
+        "offset": 669321,
+        "decoded_bytes": 2264,
+        "decoded_sha256": "60ddec57fa77de7e4c67f0eafb3438d84deb3a2a454966b53eecc9a2478a9e3e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/storymode.luc",
+        "offset": 670247,
+        "decoded_bytes": 4789,
+        "decoded_sha256": "f87a894a23ae659b8e6ac5a36ee56b08b822fcd624fb9b3ba654ab5b4eca5520",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage.group.bin",
+        "offset": 672048,
+        "decoded_bytes": 119372,
+        "decoded_sha256": "dc6e3af4f2a91574f483fca6f007295f3b1b40718a414758170636daaf049a10",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage_mercenary.group.bin",
+        "offset": 692496,
+        "decoded_bytes": 107,
+        "decoded_sha256": "de7713791661839291227afce79d89c79b72b726c3a8ab8dfc5c7b1b1ded1c69",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage_mercenary.luc",
+        "offset": 692593,
+        "decoded_bytes": 7474,
+        "decoded_sha256": "4ee2e70b1994b0e7fec8bca789179def2b1591208f2ce4e12b59ab98e2ae7135",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage_story.group.bin",
+        "offset": 694635,
+        "decoded_bytes": 451,
+        "decoded_sha256": "4920881929cfcc730e1c94dcf23482972be0fa4a13289e21414dbde6a9fb4c7a",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage.luc",
+        "offset": 694862,
+        "decoded_bytes": 16227,
+        "decoded_sha256": "83e1904b51380c3b781daa9c48b4f8d24cac8cdf02aeefd2569e59e3226eafcf",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast.group.bin",
+        "offset": 698770,
+        "decoded_bytes": 77719,
+        "decoded_sha256": "f6ababf2efe9dc96b4e795e725d7f7fa798246ee4287af3a0e229fdf472d4a28",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast_mercenary.group.bin",
+        "offset": 715484,
+        "decoded_bytes": 122,
+        "decoded_sha256": "0164e16b6b9f1ef53dc2986cc808537b89b0faf903138e004e3e1d81378563cd",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast_mercenary.luc",
+        "offset": 715587,
+        "decoded_bytes": 8262,
+        "decoded_sha256": "12513c66af15601f652a7b6e8cf99a22bec626ebe0f89f561dfcd48e6644f9f0",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast_story.group.bin",
+        "offset": 717570,
+        "decoded_bytes": 401,
+        "decoded_sha256": "3c4eca39531cbdaeccd8bda827ef5aa48800b318835e4cc53bb3d80e22560f53",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast.luc",
+        "offset": 717806,
+        "decoded_bytes": 12004,
+        "decoded_sha256": "138d35c38b88eebf7d67c4e04a40967406a7bcc35544db5210f85f99d46da8c8",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreewest/dutyfreewest.group.bin",
+        "offset": 721496,
+        "decoded_bytes": 44263,
+        "decoded_sha256": "22d6f7e20ee40da6830c354516ccb8b82b43d4ec8c9b0306d5e0cf739eec86cd",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreewest/dutyfreewest_story.group.bin",
+        "offset": 730490,
+        "decoded_bytes": 219,
+        "decoded_sha256": "c25fb6c19460b49d4f5e95f22091f107a2ed668afedb202de99447b2df10dd54",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreewest/dutyfreewest.luc",
+        "offset": 730671,
+        "decoded_bytes": 6627,
+        "decoded_sha256": "670b3c080c4eda27fa18e06d76b3160dca4e02bdbfd0c6ef3f5a754b4b918c8e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/generatortunnels/generatortunnels.group.bin",
+        "offset": 732718,
+        "decoded_bytes": 56179,
+        "decoded_sha256": "ab9939404c82e35bf11bad4c8c0daa1928e5f44da33d6fc24b49c4b1a0be3fdd",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/generatortunnels/generatortunnels_story.group.bin",
+        "offset": 745397,
+        "decoded_bytes": 371,
+        "decoded_sha256": "b6bd27a09e02f361b48dbc9c66af8d8a6c5e7f49b06b28864aa1ff42deef240f",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/generatortunnels/generatortunnels.luc",
+        "offset": 745611,
+        "decoded_bytes": 6042,
+        "decoded_sha256": "cd3067356a8adc0d96e662ce2d04732d59b0d0348398879877cdb6d96ebe4938",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/infirmary/infirmary.group.bin",
+        "offset": 747627,
+        "decoded_bytes": 119508,
+        "decoded_sha256": "3e18b483b6a22fa605bf638172108ab7dcca4815ef6c080107093d9d1de4baa0",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/infirmary/infirmary_story.group.bin",
+        "offset": 773402,
+        "decoded_bytes": 319,
+        "decoded_sha256": "115475730f8a80e63f06f3fa0539dc6d79bb6ea06c31c7e8a19abb542ce31a47",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/infirmary/infirmary.luc",
+        "offset": 773644,
+        "decoded_bytes": 21935,
+        "decoded_sha256": "dee0ce215216af7fbba93e4062c40dfbafea5dad9820a6c8fdb310b608f3b0a0",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecargo/planecargo.group.bin",
+        "offset": 778926,
+        "decoded_bytes": 17758,
+        "decoded_sha256": "534e7e27242630be1e217d716463c0f4f9314832770ce191344493e21dd6a326",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecargo/planecargo_story.group.bin",
+        "offset": 783586,
+        "decoded_bytes": 256,
+        "decoded_sha256": "0ce3a48cd41213e3483d55e0598a4818993986860df7f3784d4b2b377e5b8b8e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecargo/planecargo.luc",
+        "offset": 783772,
+        "decoded_bytes": 4702,
+        "decoded_sha256": "24169779b90d2771c189bd6345dda0f4e7ca08620d163c59137e9f845d976971",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecrashed/planecrashed.group.bin",
+        "offset": 785565,
+        "decoded_bytes": 55875,
+        "decoded_sha256": "1ac0103cdfee820513c65250a3843974579b7d9cc6edf580a16244fa1efb7687",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecrashed/planecrashed_story.group.bin",
+        "offset": 796167,
+        "decoded_bytes": 147,
+        "decoded_sha256": "ecc2b1c0c903c4fb038d0a5c148e7b3eb9b21f59839ff2c7888550da4640ac03",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecrashed/planecrashed.luc",
+        "offset": 796294,
+        "decoded_bytes": 3679,
+        "decoded_sha256": "764374d812b3d25371189693757c4a0261fe5ddec834d6763c454502d1c23d9a",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeentrance/planeentrance.group.bin",
+        "offset": 797509,
+        "decoded_bytes": 24211,
+        "decoded_sha256": "549383f09ebd5d0040b0023c7a3795c65bce81e0ac3e0eed306299602a529428",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeentrance/planeentrance_story.group.bin",
+        "offset": 804032,
+        "decoded_bytes": 290,
+        "decoded_sha256": "fc041ddc75b03f20cfbc135f90cf312c3fc5bffd64000a891e0b46b645c09557",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeentrance/planeentrance.luc",
+        "offset": 804242,
+        "decoded_bytes": 4206,
+        "decoded_sha256": "392919aeb2a49c3f39e46bfe648efaf4823f227fcf84259e42a06cdebf55a602",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeexit/planeexit.group.bin",
+        "offset": 805695,
+        "decoded_bytes": 58287,
+        "decoded_sha256": "2347abe75101478335a341d27af297dc94c73b2df2d17681dcce9fd381dd1277",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeexit/planeexit_story.group.bin",
+        "offset": 819290,
+        "decoded_bytes": 922,
+        "decoded_sha256": "9b4e56ce5280719ede77a424799be31ab1e97213fdb37b3910c2246a55830d82",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeexit/planeexit.luc",
+        "offset": 819680,
+        "decoded_bytes": 10173,
+        "decoded_sha256": "db4eee9c84e925aa1bda7926dc74d88c2c48f6010a0a677f6db2966679d1c47c",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/security/security.group.bin",
+        "offset": 822865,
+        "decoded_bytes": 115384,
+        "decoded_sha256": "f6ccf2ec7681e0f5bde1a78ea50d0daba7ca54cc2cc8f74decb1f072d9254221",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/security/security_story.group.bin",
+        "offset": 846707,
+        "decoded_bytes": 1095,
+        "decoded_sha256": "f9c0814c906994c13f764efff7fa9f67946884b6f0fc4bdf8c9f9dc6654b6b3f",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/security/security.luc",
+        "offset": 847168,
+        "decoded_bytes": 12795,
+        "decoded_sha256": "bcdd62c1e874c2d3227455b2b07332f2b1b272fae2fcb87942dfb5a0cfde88d7",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/staffarea/staffarea.group.bin",
+        "offset": 850840,
+        "decoded_bytes": 65716,
+        "decoded_sha256": "a017fbfa90b2483d56cc8a2a21dab5365c2a02fe4d367dd18a6365a353fbdd08",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/staffarea/staffarea_story.group.bin",
+        "offset": 866723,
+        "decoded_bytes": 792,
+        "decoded_sha256": "713245aa4bbd3bcbc6011920411385512c8818bfafa776b5f1b6e3a6904d4723",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/staffarea/staffarea.luc",
+        "offset": 867030,
+        "decoded_bytes": 7687,
+        "decoded_sha256": "76cf86a8179c2c72214e91c4e28caf22025c6118d3e86270322fefac77014d7b",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vip/vip.group.bin",
+        "offset": 869518,
+        "decoded_bytes": 133241,
+        "decoded_sha256": "83fa3e96afcc2d1c173d2cd4117f9cdcf8fab820d9e7d3c1d6cc6760d7c8f386",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vip/vip_story.group.bin",
+        "offset": 896885,
+        "decoded_bytes": 568,
+        "decoded_sha256": "f7737bbcb63751fb35114491582f224300040bd2c8f83465fd29c7ef7696fab3",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vip/vip.luc",
+        "offset": 897287,
+        "decoded_bytes": 19125,
+        "decoded_sha256": "cab40f2739768cde16f86249caa3e57301233707637ab6fa2982e503bf69d7ca",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vipplane/vipplane.group.bin",
+        "offset": 902448,
+        "decoded_bytes": 23752,
+        "decoded_sha256": "1baacf7b789c841e009988e65d1e84f426abd3d71f6223c45b3ee7935e4aa6cf",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vipplane/vipplane_story.group.bin",
+        "offset": 906846,
+        "decoded_bytes": 138,
+        "decoded_sha256": "aef9e3d174e0def49cf911cd889083026067a0768605b029aa2a191a1a802510",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vipplane/vipplane.luc",
+        "offset": 906972,
+        "decoded_bytes": 4655,
+        "decoded_sha256": "75647cf660fc19d34f961d3548bb1eb4ac5cb4109861b602b568c7c560a60ec8",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/warehouse/warehouse.group.bin",
+        "offset": 908482,
+        "decoded_bytes": 56599,
+        "decoded_sha256": "550e99c75ba1dede11b6fb5e4611343b40cb49a69de5830ab658754943abcb55",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/warehouse/warehouse_story.group.bin",
+        "offset": 918621,
+        "decoded_bytes": 891,
+        "decoded_sha256": "1bc0cc207ed2c4d184350b4621358bf5dc750fde4a214d9d0fb10769c88f8b13",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/warehouse/warehouse.luc",
+        "offset": 918939,
+        "decoded_bytes": 7570,
+        "decoded_sha256": "fbaa9696ad9547a2ad17fd637f8ac31c849eba17ee31d2cc626b0c279196865f",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/environment.group.bin",
+        "offset": 921675,
+        "decoded_bytes": 449706,
+        "decoded_sha256": "071fd9bd8065370896b4cf730ec9572c94259880bd573e9aa5e7bc1e688b7d53",
+        "decompression": "valid",
+        "embedded_lua": []
+      }
+    ]
   }
 }

@@ -1,0 +1,21 @@
+{
+  "changed_files": [
+    "overrides/levels/planecrashed/planecrashed.group.bin",
+    "overrides/levels/staffarea/staffarea.group.bin",
+    "overrides/levels/dutyfreeeast/dutyfreeeast.group.bin",
+    "overrides/levels/dutyfreewest/dutyfreewest.group.bin",
+    "overrides/levels/planeexit/planeexit.group.bin",
+    "overrides/levels/security/security.group.bin",
+    "overrides/levels/infirmary/infirmary.group.bin",
+    "overrides/levels/vipplane/vipplane.group.bin",
+    "overrides/levels/planeentrance/planeentrance.group.bin",
+    "overrides/levels/generatortunnels/generatortunnels.group.bin",
+    "overrides/levels/planecargo/planecargo.group.bin",
+    "overrides/levels/warehouse/warehouse.group.bin"
+  ],
+  "scripts_and_story_resources_byte_identical": true,
+  "Staff_Area_byte_identical_to_hardware_tested_trial": true,
+  "runtime_functionality_changed": false,
+  "replays_run": false,
+  "full_campaign_hardware_test": "completed start to end without errors; user confirmed"
+}

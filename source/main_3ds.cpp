@@ -71,7 +71,7 @@ int main() {
     bottom.LoadLoading(std::string(ROOT)+"/ui/loading.bin");
     if(!bottom.Load(std::string(ROOT)+"/ui/bottomscreen.bin"))puts("[ConsoleUI] artwork missing");
     else {bottomArtVisible=true;bottom.Draw(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)),0);bottom.DrawLoading(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)));gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();}
-    puts("Resident Evil Degeneration\nNew 3DS baseline 1.0\n");
+    puts("Resident Evil Degeneration\nNew 3DS baseline 1.1\n");
     printf("Data: %s/game\n", ROOT);
     setenv("RE_HYBRID_RESOURCE", "common/environment.group.bin", 1);
     setenv("RE_HYBRID_BUNDLE", "staffarea", 1);

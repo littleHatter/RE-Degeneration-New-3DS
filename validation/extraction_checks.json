@@ -1,0 +1,15 @@
+{
+  "files_verified": 50,
+  "byte_identical_to_completed_campaign_trial": true,
+  "extraction_inputs": [
+    "N-Gage package",
+    "iOS v1.00.00 IPA",
+    "BREW main.dz"
+  ],
+  "source_resources_by_platform": {
+    "ngage": 7,
+    "brew": 33,
+    "ios": 20
+  },
+  "all_files_require_user_inputs": true
+}

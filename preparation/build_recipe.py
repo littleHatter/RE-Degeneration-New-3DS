@@ -3,18 +3,18 @@ import sys,json,lzma,hashlib,base64,zlib,collections,time
 import argparse
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]));from prepare_game import ngage_files,sha
 ap=argparse.ArgumentParser(description="Build restoration copy/patch instructions from a verified prepared game directory.")
-ap.add_argument('--ngage',type=Path,required=True);ap.add_argument('--ios-main',type=Path,required=True);ap.add_argument('--game-dir',type=Path,required=True)
+ap.add_argument('--ngage',type=Path,required=True);ap.add_argument('--ios-main',type=Path,required=True);ap.add_argument('--game-dir',type=Path,required=True);ap.add_argument('--brew-main',type=Path,required=True)
 ap.add_argument('--inventory',type=Path,default=Path(__file__).with_name('source_inventory.json'));ap.add_argument('--output',type=Path,default=Path(__file__).with_name('restoration_recipe.json.zlib'));args=ap.parse_args()
 inv=json.loads(args.inventory.read_text());raw=ngage_files(args.ngage)
-archives={'ngage':(args.game_dir/'main.dz').read_bytes(),'ios':args.ios_main.read_bytes()}
+archives={'ngage':(args.game_dir/'main.dz').read_bytes(),'ios':args.ios_main.read_bytes(),'brew':args.brew_main.read_bytes()}
 assert sha(archives['ngage'])==inv['ngage_main']['sha256'] and sha(archives['ios'])==inv['ios']['sha256']
 entries={};aliases={}
-for src,key in [('ngage','ngage_main'),('ios','ios')]:
+for src,key in [('brew','brew'),('ngage','ngage_main'),('ios','ios')]:
  for e in inv[key]['entries']:
   if e['decompression']=='valid':
    key=src+'/'+e['path'];entries[key]={'archive':src,'offset':e['offset'],'size':e['decoded_bytes'],'sha256':e['decoded_sha256']}
    for x in e.get('embedded_lua',[]):aliases.setdefault(x['path'],set()).add(key)
-recipe={'version':1,'ios_sha256':sha(archives['ios']),'ngage_main_sha256':sha(archives['ngage']),'sources':{},'files':{}}
+recipe={'version':2,'brew_sha256':sha(archives['brew']),'ios_sha256':sha(archives['ios']),'ngage_main_sha256':sha(archives['ngage']),'sources':{},'files':{}}
 for p in sorted(args.game_dir.rglob('*')):
  if not p.is_file():continue
  name=p.relative_to(args.game_dir).as_posix();target=p.read_bytes();h=sha(target);row={'sha256':h,'size':len(target)}

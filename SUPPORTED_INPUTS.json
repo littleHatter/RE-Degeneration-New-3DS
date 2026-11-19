@@ -1,0 +1,16 @@
+{
+  "version": "1.1",
+  "N-Gage": {
+    "edition": "Tested Resident Evil Degeneration N-Gage 2.0 package; extracted payload matching is supported",
+    "main.dz_sha256": "b7bc5777f696072d3867379a374aebca536ed956bc96d916fe191ec32e2f9a6d",
+    "decompressed_XE3U_sha256": "7f32766261d30de61491ffce9de8b9469e6a57c10d255d7576c7aa51a8cacf76"
+  },
+  "iOS": {
+    "edition": "Resident Evil Degeneration v1.00.00, OS 2.1 release",
+    "main.dz_sha256": "fab6e72e68b9617a556967add474235f4b1b5d1d9687f3d08128a83618269598"
+  },
+  "BREW": {
+    "edition": "Verified biohazard.s3e / ResidentEvil/main.dz distribution",
+    "main.dz_sha256": "a687a89ce178ca730926d585e031d2afaf60b3424792090fd62c965bd78d1898"
+  }
+}
