@@ -1,0 +1,15 @@
+{
+  "frames": 1200,
+  "menu_prompt_counts": {
+    "5": 81
+  },
+  "gameplay_prompt_counts": {
+    "48": 101
+  },
+  "after_keypad_counts": {
+    "48": 151
+  },
+  "keypad_replay": "passed",
+  "hardware_flicker_check": "pending",
+  "change": "double buffered bottom rendering; native game data unchanged"
+}

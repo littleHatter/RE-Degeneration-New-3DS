@@ -1,0 +1,4 @@
+#include "../source/bottomscreen.h"
+#include <cassert>
+#include <cstdio>
+int main(){BottomScreen b;assert(b.Load("3ds/res_degene/ui/bottomscreen.bin"));assert(b.LoadLoading("3ds/res_degene/ui/loading.bin"));uint16_t before[320*240],after[320*240];b.Draw(before,0);b.DrawLoading(before);b.Draw(after,0);unsigned changed=0;for(unsigned y=0;y<240;++y)for(unsigned x=0;x<320;++x)if(before[x*240+239-y]!=after[x*240+239-y]){assert(x>=262&&y>=225);++changed;}assert(changed>0);FILE*f=fopen("loading_preview.ppm","wb");fprintf(f,"P6\n320 240\n255\n");for(unsigned y=0;y<240;++y)for(unsigned x=0;x<320;++x){auto p=before[x*240+239-y];unsigned char c[]={uint8_t((p>>11)*255/31),uint8_t(((p>>5)&63)*255/63),uint8_t((p&31)*255/31)};fwrite(c,1,3,f);}fclose(f);puts("PASS: loading artwork confined to bottom-right 58x15; absent after normal frame redraw");}

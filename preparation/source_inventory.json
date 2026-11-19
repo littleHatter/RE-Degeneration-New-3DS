@@ -1,0 +1,787 @@
+{
+  "ngage_main": {
+    "sha256": "b7bc5777f696072d3867379a374aebca536ed956bc96d916fe191ec32e2f9a6d",
+    "entries": [
+      {
+        "path": "console.bin",
+        "offset": 1387,
+        "decoded_bytes": 16893,
+        "decoded_sha256": "8040e4a4f1d3ea1409ae3754037a5780a2bf337d9c336c3434457cee5d29700b",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/english.dat",
+        "offset": 7100,
+        "decoded_bytes": 45825,
+        "decoded_sha256": "471d95689a18ab13ac9326d8842f27ee05be9caa536b3d5117937637a6811163",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/french.dat",
+        "offset": 23406,
+        "decoded_bytes": 49377,
+        "decoded_sha256": "cd895b691775e8cb5a9f0ce6e8c7400b84c139e89f29d5ff47857cffed2aebed",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/german.dat",
+        "offset": 39940,
+        "decoded_bytes": 50153,
+        "decoded_sha256": "6cae1e6fc8789ea8bfbcc6aa848faab91111214a5a198e321e230b6befbf5d2e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/italian.dat",
+        "offset": 57318,
+        "decoded_bytes": 49417,
+        "decoded_sha256": "04addbae664e34e21c659fcd29203d6f03cc240b43ddff13c7463d532a56ea6e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/portuguese.dat",
+        "offset": 74260,
+        "decoded_bytes": 5602,
+        "decoded_sha256": "3efd7a02b21e2c3a2f265980286d027cefbb309fd94ba87e34546906bab8724a",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/spanish.dat",
+        "offset": 75013,
+        "decoded_bytes": 46743,
+        "decoded_sha256": "3cc72c22308c8aa142a6b34bf098423e61687aac716bc7e8dc0ff02d41463e80",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/localisehashes.dat",
+        "offset": 91093,
+        "decoded_bytes": 6702,
+        "decoded_sha256": "568df10ee5aeee65876514e7a739517db53d3c724ad41a13cc165e3c81baf5ba",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/loading_wav.group.bin",
+        "offset": 95415,
+        "decoded_bytes": 24136,
+        "decoded_sha256": "193befc16fab2ad9f735d57446c441b4dcffe48c9110e6b3b30b1c4d25b7a12f",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/fixed_wav.group.bin",
+        "offset": 103298,
+        "decoded_bytes": 912500,
+        "decoded_sha256": "9e3c485c280b9327a90e854cd9cf987707411ccc158c9957b63fd6d40938af62",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/ingame.luc",
+        "offset": 530286,
+        "decoded_bytes": 4295,
+        "decoded_sha256": "052a84c162951411efb841417b775d9fe13712b32789735b241349d464789dea",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/splash.group.bin",
+        "offset": 531521,
+        "decoded_bytes": 15394,
+        "decoded_sha256": "caba46d47884a928612a976cfe847c479a175efbb6d049f635f11c23962528ec",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/frontend_wav.group.bin",
+        "offset": 534811,
+        "decoded_bytes": 174650,
+        "decoded_sha256": "5ac5c649ecf3a745ace3857f8ac805d84d13436e4e87f3c446de02db0ac4f0c5",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/characters/characters_main.group.bin",
+        "offset": 588321,
+        "decoded_bytes": 279383,
+        "decoded_sha256": "c39c4bbb8aeac70ce7cb99e39d6441fb0343db26fd285f858f00b8bbbb1f85f5",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/designobjects/designobjects.group.bin",
+        "offset": 723378,
+        "decoded_bytes": 772,
+        "decoded_sha256": "37e2f45d3d0add9bd1186046cb0269a85a57c54a092ae5f3cbf3202b97fb172e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/mercenarymode.group.bin",
+        "offset": 723788,
+        "decoded_bytes": 99,
+        "decoded_sha256": "7dbfe2b02282d22708b1c4b713a17df6f7bdb41f94f01a84b5a67e4553fd580c",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/mercenarymode.luc",
+        "offset": 723888,
+        "decoded_bytes": 4177,
+        "decoded_sha256": "dce9bf4860ebc1fc851c96cae4885d8da3623647a732ce816f6b266ebe267b7b",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/storymode.group.bin",
+        "offset": 725777,
+        "decoded_bytes": 2558,
+        "decoded_sha256": "83e949d3eec6c8bc3963b162e4a3caffd451f7465c3fabf5f23f5d0a41c3bc78",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/storymissions.luc",
+        "offset": 727373,
+        "decoded_bytes": 2264,
+        "decoded_sha256": "60ddec57fa77de7e4c67f0eafb3438d84deb3a2a454966b53eecc9a2478a9e3e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/scripts/storymode.luc",
+        "offset": 728299,
+        "decoded_bytes": 4789,
+        "decoded_sha256": "f87a894a23ae659b8e6ac5a36ee56b08b822fcd624fb9b3ba654ab5b4eca5520",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/environment.group.bin",
+        "offset": 730100,
+        "decoded_bytes": 449112,
+        "decoded_sha256": "b191bc3b34d7f510ad2dacfc937d10346aef3f74ec8180d2dc61ae6b66043729",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage.group.bin",
+        "offset": 902118,
+        "decoded_bytes": 119372,
+        "decoded_sha256": "f6482796515f6ff4f2ad378502c96f30679cc298e70acbbc666de305e1c3e4ed",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage_mercenary.group.bin",
+        "offset": 922555,
+        "decoded_bytes": 107,
+        "decoded_sha256": "5c7f6c85b99521032a0313105ef7ab35f09d1f8f36777009ca1b6d699301785f",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage_mercenary.luc",
+        "offset": 922652,
+        "decoded_bytes": 7474,
+        "decoded_sha256": "4ee2e70b1994b0e7fec8bca789179def2b1591208f2ce4e12b59ab98e2ae7135",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage_story.group.bin",
+        "offset": 924694,
+        "decoded_bytes": 451,
+        "decoded_sha256": "161bee0c1e21d884d12d527fdaf557456fe51977182d68ab3ee634e834420f10",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage.luc",
+        "offset": 924923,
+        "decoded_bytes": 16227,
+        "decoded_sha256": "83e1904b51380c3b781daa9c48b4f8d24cac8cdf02aeefd2569e59e3226eafcf",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vip/vip.group.bin",
+        "offset": 928831,
+        "decoded_bytes": 133241,
+        "decoded_sha256": "00617ef7642d96352c2ce7e2069777f8dce1d67e49f8db9f4877973aafcf5248",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vip/vip_story.group.bin",
+        "offset": 956192,
+        "decoded_bytes": 568,
+        "decoded_sha256": "55eb53635c89ad16d65df884dd33fe1fd1c6acf94d2f9d413c18e1d75064f1f1",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vip/vip.luc",
+        "offset": 956597,
+        "decoded_bytes": 18858,
+        "decoded_sha256": "1f740a0833c41cb79c9c7a517692ca42282d173f27ad3696797386dca3e8a0cb",
+        "decompression": "valid",
+        "embedded_lua": []
+      }
+    ]
+  },
+  "ios": {
+    "sha256": "fab6e72e68b9617a556967add474235f4b1b5d1d9687f3d08128a83618269598",
+    "entries": [
+      {
+        "path": "console.bin",
+        "offset": 2752,
+        "decoded_bytes": 18309,
+        "decoded_sha256": "ebd652d6433db02ba0a48f12933cd3c32b9a3fa10c09d7f4a9346396dfb3527d",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/iphone_english.dat",
+        "offset": 8867,
+        "decoded_bytes": 48003,
+        "decoded_sha256": "da60ee2ff53cd3e6f60cf6f4a1e5dbf4b72278c143c06e267b06e835d7ab61af",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/iphone_french.dat",
+        "offset": 25745,
+        "decoded_bytes": 52183,
+        "decoded_sha256": "47ba5f24d231d69382e449ef516f9bb53dd7570e2139a0db80e95074a6164ab0",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/iphone_german.dat",
+        "offset": 42881,
+        "decoded_bytes": 52834,
+        "decoded_sha256": "1a56607b321c4884de9c6638bd055193a125bc040c37dca6a8286f509e952011",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/iphone_italian.dat",
+        "offset": 60909,
+        "decoded_bytes": 51947,
+        "decoded_sha256": "392762c41c80bdc11b83042e7f1e73d919f117a7481d19090e3b64d872a753b3",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/iphone_japanese.dat",
+        "offset": 78412,
+        "decoded_bytes": 57237,
+        "decoded_sha256": "5b6464d945485fc3e5ab83428bd72ba3e713efa9cced431a01a4048a088e12ec",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/iphone_portuguese.dat",
+        "offset": 95115,
+        "decoded_bytes": 5762,
+        "decoded_sha256": "c5426e05a49eb2468c317b2e33332663fd04d36e301dc74c71fbeb34b3ee2cd0",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/iphone_spanish.dat",
+        "offset": 95882,
+        "decoded_bytes": 49381,
+        "decoded_sha256": "6f0e53e9f053ab7a81835aba7de2d2b08108a05d932ff7444f1cce3a03661d23",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "localisation/localisehashes.dat",
+        "offset": 112546,
+        "decoded_bytes": 6894,
+        "decoded_sha256": "dd376629132158be3325fd911c1998d4891ffb9b53a4e4b05454e365a64cb05c",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/loading_wav.group.bin",
+        "offset": 117034,
+        "decoded_bytes": 509980,
+        "decoded_sha256": "56d6d04d2b48fe23317788b5e9f13ab64bdc8fa47a8398c7a6cb7604b1d15597",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/fixed_wav.group.bin",
+        "offset": 239602,
+        "decoded_bytes": 4971530,
+        "decoded_sha256": "04c932b2455606167af293431fcf22da310f36357e3d1725e16995e2ff5f5e97",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 4824,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 3620446,
+            "path": "common/scripts/ingame.luc",
+            "sha256": "c13ede7ce8e15720899d91a2b2d19b6e5e30a4d01a675d31680daa401b407ced"
+          }
+        ]
+      },
+      {
+        "path": "common/splash.group.bin",
+        "offset": 2462765,
+        "decoded_bytes": 15478,
+        "decoded_sha256": "130842cf1cb4fbef9c002275afe7962febd014555244ab895b96ebdd8e960258",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/frontend_wav.group.bin",
+        "offset": 2466563,
+        "decoded_bytes": 205006,
+        "decoded_sha256": "3f55b02dfb213d1d5131ee8413d36439e62524aed982458dfba5a8750648704a",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/characters/characters_main.group.bin",
+        "offset": 2520426,
+        "decoded_bytes": 560881,
+        "decoded_sha256": "6ca907bf20a03042c31cd3404d9a7ff3077528dd91da8f97099ad31b7a284fc2",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/designobjects/designobjects.group.bin",
+        "offset": 2840443,
+        "decoded_bytes": 1132,
+        "decoded_sha256": "761cb212b3bb114b3eee010f6b235f2049b395607bf5a5bad07ea4069b1aaf41",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "common/mercenarymode.group.bin",
+        "offset": 2841022,
+        "decoded_bytes": 4280,
+        "decoded_sha256": "720597256960c93274b9b713ae641bf4a2494b5412b0e64951a60a6ab1de075b",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 4177,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 99,
+            "path": "common/scripts/mercenarymode.luc",
+            "sha256": "dce9bf4860ebc1fc851c96cae4885d8da3623647a732ce816f6b266ebe267b7b"
+          }
+        ]
+      },
+      {
+        "path": "common/storymode.group.bin",
+        "offset": 2842973,
+        "decoded_bytes": 10627,
+        "decoded_sha256": "ee8ba8aa2c6d418eb25f8b1639c50a3f401c65534111b728cd7763ca9a316edf",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 2264,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 2585,
+            "path": "common/scripts/storymissions.luc",
+            "sha256": "60ddec57fa77de7e4c67f0eafb3438d84deb3a2a454966b53eecc9a2478a9e3e"
+          },
+          {
+            "bytes": 5733,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 4890,
+            "path": "common/scripts/storymode.luc",
+            "sha256": "0c92ed35db4ff6c855d018c81fcec3342a4d51597a2a44aada4854c8e2075f96"
+          }
+        ]
+      },
+      {
+        "path": "levels/baggage/baggage.group.bin",
+        "offset": 2847494,
+        "decoded_bytes": 907128,
+        "decoded_sha256": "8abe9166428962623ec47f64f009187808481ea7d67e3bfa7d424151148deb6b",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/baggage/baggage_mercenary.group.bin",
+        "offset": 3190764,
+        "decoded_bytes": 7585,
+        "decoded_sha256": "16033f3b957347e011a4da4400fe969607dc13cd3bc0643a96021b973217009d",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 7474,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 107,
+            "path": "levels/baggage/baggage_mercenary.luc",
+            "sha256": "4ee2e70b1994b0e7fec8bca789179def2b1591208f2ce4e12b59ab98e2ae7135"
+          }
+        ]
+      },
+      {
+        "path": "levels/baggage/baggage_story.group.bin",
+        "offset": 3192873,
+        "decoded_bytes": 16823,
+        "decoded_sha256": "2c6284bb362398f3d522983004011d095b5a90a10c5b9b310948f7b81862e5c4",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 16320,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 93,
+            "path": "levels/baggage/baggage.luc",
+            "sha256": "f5c543ed585373d132c33da8ff2d1e085a960732c267ca1dd6e7dfbe61ac29c4"
+          }
+        ]
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast.group.bin",
+        "offset": 3197041,
+        "decoded_bytes": 867337,
+        "decoded_sha256": "22a6e0eef5b1f81eb30ae9581cb290184b2ecc81f44fa8e59cedd24359c133c4",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast_mercenary.group.bin",
+        "offset": 3578902,
+        "decoded_bytes": 8388,
+        "decoded_sha256": "419f99ceeb92c2405d14fde7fe83d168760773ff6695f2fb841902f6c8fd94d4",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 8262,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 122,
+            "path": "levels/dutyfreeeast/dutyfreeeast_mercenary.luc",
+            "sha256": "12513c66af15601f652a7b6e8cf99a22bec626ebe0f89f561dfcd48e6644f9f0"
+          }
+        ]
+      },
+      {
+        "path": "levels/dutyfreeeast/dutyfreeeast_story.group.bin",
+        "offset": 3580950,
+        "decoded_bytes": 12441,
+        "decoded_sha256": "149c48f1642c8f826c7cc5f372e73bd8ea858acdad8d6478b12eb3739e5a64e3",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 12004,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 108,
+            "path": "levels/dutyfreeeast/dutyfreeeast.luc",
+            "sha256": "138d35c38b88eebf7d67c4e04a40967406a7bcc35544db5210f85f99d46da8c8"
+          }
+        ]
+      },
+      {
+        "path": "levels/dutyfreewest/dutyfreewest.group.bin",
+        "offset": 3584860,
+        "decoded_bytes": 795356,
+        "decoded_sha256": "533a1c3bfa2da20820ada50e86a57101a3fb16a697117909ba2969dcf8807647",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/dutyfreewest/dutyfreewest_story.group.bin",
+        "offset": 3925363,
+        "decoded_bytes": 6850,
+        "decoded_sha256": "88b9638a0711fbd82c2ff077a8c50ab4882cdc8c0d15b2d5990ca3b466dc9b4b",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 6627,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 108,
+            "path": "levels/dutyfreewest/dutyfreewest.luc",
+            "sha256": "670b3c080c4eda27fa18e06d76b3160dca4e02bdbfd0c6ef3f5a754b4b918c8e"
+          }
+        ]
+      },
+      {
+        "path": "levels/generatortunnels/generatortunnels.group.bin",
+        "offset": 3927563,
+        "decoded_bytes": 858405,
+        "decoded_sha256": "4a1a8b706c4d0091b51196cc8575fe51aef226f3aa5d4f43f0b9aa2628d13d18",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/generatortunnels/generatortunnels_story.group.bin",
+        "offset": 4197491,
+        "decoded_bytes": 6449,
+        "decoded_sha256": "610dbded6a8850baf1e92ef3cb7a4554637c01aee915402a401bdd06906a80ed",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 6042,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 120,
+            "path": "levels/generatortunnels/generatortunnels.luc",
+            "sha256": "82d813203b0c3d962782c44b622116f05dc0474c41a960552bb43aca40d081ac"
+          }
+        ]
+      },
+      {
+        "path": "levels/infirmary/infirmary.group.bin",
+        "offset": 4199697,
+        "decoded_bytes": 915992,
+        "decoded_sha256": "f88a33d83f1ed693b948f4025528ff198847e2cee4131e885bbf998a3a908652",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/infirmary/infirmary_story.group.bin",
+        "offset": 4511533,
+        "decoded_bytes": 22274,
+        "decoded_sha256": "19a9bd46c65d0878ef62f6f637a9ee0913fc24440a51ffe18048eee032f1d6fa",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 21935,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 99,
+            "path": "levels/infirmary/infirmary.luc",
+            "sha256": "ff390aa028bccf8332bb55726fc39b3d3466f1ae35c5d6ca948f8d2b998003d7"
+          }
+        ]
+      },
+      {
+        "path": "levels/planecargo/planecargo.group.bin",
+        "offset": 4517050,
+        "decoded_bytes": 224898,
+        "decoded_sha256": "29aa3f9c2c573b7723ca2ef23f48a340b5d867978fe300da70fc0ec7e010b5ed",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecargo/planecargo_story.group.bin",
+        "offset": 4624546,
+        "decoded_bytes": 4905,
+        "decoded_sha256": "cdef5205f9197dffd2b9cdfa2c4c3ba88caaf3d0e8f6acc559d88290675b6bc6",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 4629,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 102,
+            "path": "levels/planecargo/planecargo.luc",
+            "sha256": "895da8b3d6193868b9d53b1256b65bead314154e0bc8ae98d96a1b8dccca4c52"
+          }
+        ]
+      },
+      {
+        "path": "levels/planecrashed/planecrashed.group.bin",
+        "offset": 4626464,
+        "decoded_bytes": 838011,
+        "decoded_sha256": "26285809b645b6ac290657d1406884d94f8c3ef6d4556e0c4d38dd2e1e818969",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planecrashed/planecrashed_story.group.bin",
+        "offset": 4998614,
+        "decoded_bytes": 3830,
+        "decoded_sha256": "c35bcbcb1f4c384d594f3f4db0262d7f9c9c2beabea718b56018d9bdbb170dbe",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 3679,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 108,
+            "path": "levels/planecrashed/planecrashed.luc",
+            "sha256": "d99d218f9c238cc9d454dc5fd3b25ffc19f5538ee1bb231f396bcea4e4780f70"
+          }
+        ]
+      },
+      {
+        "path": "levels/planeentrance/planeentrance.group.bin",
+        "offset": 4999922,
+        "decoded_bytes": 740546,
+        "decoded_sha256": "0f2f1e32900719b0e01301a0b3407de19fd5b00589044972d91dd2e505021301",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeentrance/planeentrance_story.group.bin",
+        "offset": 5246636,
+        "decoded_bytes": 4516,
+        "decoded_sha256": "856179f7fc89a43b58877a4c60878d00c85c5c5b903bffaa84b4878f05194f22",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 4206,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 111,
+            "path": "levels/planeentrance/planeentrance.luc",
+            "sha256": "055dddd445e50968f34d53a5accded38ebc05c6d06d3e3d2db165a8351ea3c05"
+          }
+        ]
+      },
+      {
+        "path": "levels/planeexit/planeexit.group.bin",
+        "offset": 5248276,
+        "decoded_bytes": 810665,
+        "decoded_sha256": "9bc4d765b3ec971aa069184add0e893eeb936cf9f525822931185102cd0bc46e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/planeexit/planeexit_story.group.bin",
+        "offset": 5596961,
+        "decoded_bytes": 11092,
+        "decoded_sha256": "240ca7d002a3beea0950e4ec8d49a7d8cafd043f320501be56cda19ca9367ef1",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 10173,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 99,
+            "path": "levels/planeexit/planeexit.luc",
+            "sha256": "2b1a5e272506cb1b56c071860458c937bc9ea77346a5739f345005fded8bda07"
+          }
+        ]
+      },
+      {
+        "path": "levels/security/security.group.bin",
+        "offset": 5600567,
+        "decoded_bytes": 898395,
+        "decoded_sha256": "a8d18223cc5df8b113e082465a3c515a5f445191f6c9ed6759a76343e38d91e8",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/security/security_story.group.bin",
+        "offset": 5933967,
+        "decoded_bytes": 14144,
+        "decoded_sha256": "324cc78c7652279bc232585ecc244df58ae1a55691826263846686a19adb6ddf",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 12917,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 96,
+            "path": "levels/security/security.luc",
+            "sha256": "dac8c3bb6454fcd3a1b3fc29a86746720937b5c5377774dc1254d35e1c492093"
+          }
+        ]
+      },
+      {
+        "path": "levels/staffarea/staffarea.group.bin",
+        "offset": 5938128,
+        "decoded_bytes": 822682,
+        "decoded_sha256": "00f08f9d547dbff459241571c0ef731a06b6c413fe4801663c75f23200fbcf1a",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/staffarea/staffarea_story.group.bin",
+        "offset": 6248763,
+        "decoded_bytes": 8579,
+        "decoded_sha256": "54121c0ad1b198806824aec761845aad9328235d109e5dce920965ad67c146ad",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 7687,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 99,
+            "path": "levels/staffarea/staffarea.luc",
+            "sha256": "b437d9bd1a4669e5c2aeacab7373b8df6c05e878abb8278e63cd53529bcf5a54"
+          }
+        ]
+      },
+      {
+        "path": "levels/vip/vip.group.bin",
+        "offset": 6251545,
+        "decoded_bytes": 912102,
+        "decoded_sha256": "5d1181b24842a8d006454bcf597459426375933565d569e6869ac0502597cf28",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vip/vip_story.group.bin",
+        "offset": 6654782,
+        "decoded_bytes": 20418,
+        "decoded_sha256": "b1bfe79e68154f571080efa570c9c59ace18cef539222cb799be187dd49132d0",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 19851,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 81,
+            "path": "levels/vip/vip.luc",
+            "sha256": "dd1d1a1938a3887ff868bb4df5c7727d0e6ac5fba5d61a296d14bf7d7334ce47"
+          }
+        ]
+      },
+      {
+        "path": "levels/vipplane/vipplane.group.bin",
+        "offset": 6660489,
+        "decoded_bytes": 768009,
+        "decoded_sha256": "084e64b0504c40ec8d9a13b8a30375306e5c322203fde6f00f220d1ad88e5111",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/vipplane/vipplane_story.group.bin",
+        "offset": 6987321,
+        "decoded_bytes": 5139,
+        "decoded_sha256": "679a84f776330d1213061da22b3d97e5b833950814c509ceaa02da4a14d70228",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 4955,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 96,
+            "path": "levels/vipplane/vipplane.luc",
+            "sha256": "c9aac6060af7f65d192e6d28714416b8b06ba62d9f3c06ee72cdfe393f4728c1"
+          }
+        ]
+      },
+      {
+        "path": "levels/warehouse/warehouse.group.bin",
+        "offset": 6989061,
+        "decoded_bytes": 790806,
+        "decoded_sha256": "b6df5bf25c6164363825e49525a9dd131ec1474fe93bccc448cd21cd278f9e9e",
+        "decompression": "valid",
+        "embedded_lua": []
+      },
+      {
+        "path": "levels/warehouse/warehouse_story.group.bin",
+        "offset": 7251780,
+        "decoded_bytes": 8592,
+        "decoded_sha256": "02dc42a19d52886f7869248dc8d13654d476876e9aa61f98ddf061a2f16eb53a",
+        "decompression": "valid",
+        "embedded_lua": [
+          {
+            "bytes": 7684,
+            "header_hex": "1b4c75615100010404040401",
+            "offset": 99,
+            "path": "levels/warehouse/warehouse.luc",
+            "sha256": "5c04abdcd4db411785920dd612a78596c2861eeafa55016865e9d62ec336bb37"
+          }
+        ]
+      },
+      {
+        "path": "common/environment.group.bin",
+        "offset": 7254903,
+        "decoded_bytes": 570591,
+        "decoded_sha256": "5203e520108c547096c42b76ebb73f7a90c95c455e0d6d8cd4c74c4a65cad87f",
+        "decompression": "valid",
+        "embedded_lua": []
+      }
+    ]
+  }
+}
