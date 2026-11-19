@@ -1,5 +1,7 @@
 # Resident Evil Degeneration — New Nintendo 3DS
 
+![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen1.png "Screenshot")  ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen2.png "Screenshot") 
+
 Based on the MGSM compatibility framework and the separate Need for Speed Undercover, Pandemonium and Project Gotham Racing ports.
 
 This is a hybridisation of the N-Gage 2.0 and iOS versions of Resident Evil Degeneration, using assets converted from the iOS version to cover the gaps made by the N-Gage 2.0's XOR-masked bit manipulation.
