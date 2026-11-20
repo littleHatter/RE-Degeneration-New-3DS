@@ -14,6 +14,9 @@ Requires a **New Nintendo 3DS / New 3DS XL / New 2DS XL** with the Homebrew Laun
 
 Releases requires your own matching N-Gage game package, BREW archive and iOS donor copy; see PREPARING_GAME_DATA.md. The GitHub source package contains compatibility source, artwork and restoration patches, with no complete game data files.
 
+Consider using the automated extractor for preparing your game files:
+https://github.com/littleHatter/Airplay-New3DS-Game-Data-Preparation-Tool
+
 ## Controls
 
 | Input | Action |
