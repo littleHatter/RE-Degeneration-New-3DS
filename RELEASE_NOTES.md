@@ -1,3 +1,12 @@
+# Resident Evil: Degeneration v1.2
+
+- Hardware-confirmed live switching between Standard (320×240) and Wide (400×240).
+- Tap the bottom-left touchscreen graphic to switch. Each launch starts in
+  Standard. The toggle is hidden and inactive while the keypad is open.
+- Both launcher metadata fields read **Resident Evil: Degeneration**.
+- Both install packages use the exact Live Display Toggle Test 1 executable.
+- The v1.1 BREW campaign data and three-input preparation recipe are carried forward.
+
 # Resident Evil Degeneration — v1.1
 
 Promotes the completed BREW campaign trial to the release baseline. A full game run on New 3DS completed without errors, with lighting confirmed significantly closer to the N-Gage original.
