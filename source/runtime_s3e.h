@@ -26,6 +26,8 @@ public:
     void RequestSuspendAndStop();
     int Run(uint32_t entry,uint32_t maxFrames=0);
     uint32_t Frames() const;
+    unsigned SurfaceWidth() const;
+    void RequestDisplayToggle();
     uint32_t TakeConsolePrompts();
     bool Failed() const;
     bool KeypadOpen() const;

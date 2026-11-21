@@ -1,10 +1,13 @@
 {
-  "version": "1.1",
-  "title": "Resident Evil Degeneration",
-  "description": "Resident Evil Degeneration",
+  "version": "1.2",
+  "title": "Resident Evil: Degeneration",
+  "description": "Resident Evil: Degeneration",
+  "baseline": "Live Display Toggle Test 1, confirmed working on hardware by user",
   "data_root": "sdmc:/3ds/res_degene/",
   "normal_progression": true,
-  "runtime_sources_identical_to_completed_trial": true,
-  "3dsx_sha256": "623b062ff7592a5d07586893e9fff243fff4380713e59de07c74a97cd1961a4b",
-  "campaign_hardware_test": "completed without errors, reported by user"
+  "application_sha256": "411304f72d0a97c64b690105ebb197cf379b5cbe722ae473d675fae251296c26",
+  "smdh_sha256": "64ce4d4ce1e0155169d11fd600b138428352f6488539010e5898b98dc63600bd",
+  "prepared_game_files_verified": 50,
+  "prepared_ui_files": 3,
+  "game_data_baseline": "v1.1 BREW campaign restoration"
 }

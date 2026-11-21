@@ -8,6 +8,7 @@
 #include "audio_3ds.h"
 #include "runtime_clock.h"
 #include "touch_keypad.h"
+#include "display_toggle_art.h"
 #include "bottomscreen.h"
 
 // Leave application memory available for the guest's separately mapped regions.
@@ -53,6 +54,22 @@ void WaitForExit() {
 }
 extern "C" void ShowLogOnScreen() { gfxSetDoubleBuffering(GFX_BOTTOM,false); console.frameBuffer=reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)); bool was=bottomArtVisible;bottomArtVisible=false;consoleSelect(&console);if(was)consoleClear(); gfxFlushBuffers();gfxScreenSwapBuffers(GFX_BOTTOM,false);gspWaitForVBlank(); }
 
+namespace {
+constexpr unsigned kToggleTop=240-kToggleHeight;
+void DrawDisplayToggle(u16* screen,bool wide){
+    const uint8_t* icon=wide?kSwitchToStandard:kSwitchToWide;
+    for(unsigned x=0;x<kToggleWidth;++x)for(unsigned y=0;y<kToggleHeight;++y){
+        const auto* pixel=icon+(y*kToggleWidth+x)*4;
+        const unsigned alpha=pixel[3];
+        if(!alpha)continue;
+        auto& out=screen[x*240+239-(kToggleTop+y)];
+        const unsigned r=((pixel[0]*31/255)*alpha+(out>>11)*(255-alpha)+127)/255;
+        const unsigned g=((pixel[1]*63/255)*alpha+((out>>5)&63)*(255-alpha)+127)/255;
+        const unsigned b=((pixel[2]*31/255)*alpha+(out&31)*(255-alpha)+127)/255;
+        out=(r<<11)|(g<<5)|b;
+    }
+}
+}
 int main() {
     gfxInitDefault(); gfxSet3D(false);
     gfxSetScreenFormat(GFX_TOP, GSP_BGR8_OES);
@@ -113,6 +130,9 @@ int main() {
                     touchPosition point{};if(held&KEY_TOUCH)hidTouchRead(&point);
                     int touchKey=touchKeypad.Update(runtime.KeypadOpen(),held&KEY_TOUCH,point.px,point.py);
                     if(touchKey>=0)runtime.QueueKeypadKey(unsigned(touchKey));
+                    if(runtime.Frames()&&bottom.Ready()&&!runtime.KeypadOpen()&&(hidKeysDown()&KEY_TOUCH)
+                       &&point.px<kToggleWidth&&point.py>=kToggleTop&&point.py<240)
+                        runtime.RequestDisplayToggle();
                     // Select intentionally has no action.
                     keys[204] = held & (KEY_DUP|KEY_CPAD_UP);
                     keys[205] = held & (KEY_DDOWN|KEY_CPAD_DOWN);
@@ -127,10 +147,12 @@ int main() {
                 runtime.SetFrameCallback([&](uint32_t frame, const uint16_t* pixels,
                                              S3ERuntime::Keys& keys) {
                     u8* screen = gfxGetFramebuffer(GFX_TOP, GFX_LEFT, nullptr, nullptr);
-                    memset(screen, 0, 400*240*3);
-                    for (int y=0; y<240; ++y) for (int x=0; x<320; ++x) {
-                        u16 p = pixels[y*320+x];
-                        u8* out = screen+((x+40)*240+239-y)*3;
+                    const unsigned width=runtime.SurfaceWidth();
+                    const unsigned left=(400-width)/2;
+                    if(left)memset(screen, 0, 400*240*3);
+                    for (int y=0; y<240; ++y) for (unsigned x=0; x<width; ++x) {
+                        u16 p = pixels[y*width+x];
+                        u8* out = screen+((x+left)*240+239-y)*3;
                         out[0]=(p&31)*255/31; out[1]=((p>>5)&63)*255/63;
                         out[2]=((p>>11)&31)*255/31;
                     }
@@ -138,7 +160,12 @@ int main() {
                     if(runtime.KeypadOpen())prompts=0;
                     bool show=runtime.KeypadOpen()&&touchKeypad.Ready();
                     if(show){bottomArtVisible=true;touchKeypad.Draw(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)));}
-                    else if(bottom.Ready()){bottomArtVisible=true;bottom.Draw(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)),prompts);}
+                    else if(bottom.Ready()){
+                        bottomArtVisible=true;
+                        auto* bottomFb=reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr));
+                        bottom.Draw(bottomFb,prompts);
+                        if(!runtime.KeypadOpen())DrawDisplayToggle(bottomFb,width==400);
+                    }
                     gfxFlushBuffers(); gfxSwapBuffers(); gspWaitForVBlank();
                 });
                 result = runtime.Run(G(binary.entry_point));

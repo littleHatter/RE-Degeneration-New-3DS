@@ -71,7 +71,8 @@ int main(int argc,char**argv){
    std::vector<uint16_t> fb(320*240);if(rt.KeypadOpen()&&touchReplay.Ready())touchReplay.Draw(fb.data());else bottomPreview.Draw(fb.data(),rt.KeypadOpen()?0:consolePrompts);
    char suffix[64];snprintf(suffix,sizeof(suffix),"/ui_%06u.ppm",frame);FILE* f=fopen((output+suffix).c_str(),"wb");if(f){fprintf(f,"P6\n320 240\n255\n");for(int y=0;y<240;++y)for(int x=0;x<320;++x){auto v=fb[x*240+239-y];unsigned char rgb[]={uint8_t((v>>11)*255/31),uint8_t(((v>>5)&63)*255/63),uint8_t((v&31)*255/31)};fwrite(rgb,1,3,f);}fclose(f);}
   }
-  if(frame<=3||frame%30==0||frame==limit){char suffix[64];snprintf(suffix,sizeof(suffix),"/frame_%06u.ppm",frame);FILE*f=fopen((output+suffix).c_str(),"wb");if(f){fprintf(f,"P6\n320 240\n255\n");for(unsigned i=0;i<320*240;++i){auto p=image[i];unsigned char c[]={uint8_t((p>>11)*255/31),uint8_t(((p>>5)&63)*255/63),uint8_t((p&31)*255/31)};fwrite(c,1,3,f);}fclose(f);}}
+  if(getenv("RE_LIVE")&&(frame==1180||frame==1340))rt.RequestDisplayToggle();
+  if(frame<=3||frame%30==0||frame==1180||frame==1181||frame==1340||frame==1341||frame==limit){char suffix[64];snprintf(suffix,sizeof(suffix),"/frame_%06u.ppm",frame);FILE*f=fopen((output+suffix).c_str(),"wb");if(f){const unsigned width=rt.SurfaceWidth();fprintf(f,"P6\n%u 240\n255\n",width);for(unsigned i=0;i<width*240;++i){auto p=image[i];unsigned char c[]={uint8_t((p>>11)*255/31),uint8_t(((p>>5)&63)*255/63),uint8_t((p&31)*255/31)};fwrite(c,1,3,f);}fclose(f);}}
  });
  int result=rt.Run(G(bin.entry_point),limit);if(touchReplayFailed)result=1;
  if(result){FILE*f=fopen((output+"/fault.json").c_str(),"wb");if(f){fprintf(f,"{\"registers\":[");for(int i=0;i<17;++i){uint32_t value=0;cpu->RegRead(i,&value);fprintf(f,"%s%u",i?",":"",value);}uint32_t pc=0;cpu->RegRead(Cpu::REG_PC,&pc);uint8_t code[16]{};cpu->MemRead(pc,code,sizeof(code));fprintf(f,"],\"instruction_bytes\":\"");for(auto v:code)fprintf(f,"%02x",v);fprintf(f,"\"}\n");fclose(f);}}

@@ -5,8 +5,8 @@ endif
 include $(DEVKITARM)/3ds_rules
 TARGET := res_degene
 BUILD := build
-APP_TITLE := Resident Evil Degeneration
-APP_DESCRIPTION := Resident Evil Degeneration
+APP_TITLE := Resident Evil: Degeneration
+APP_DESCRIPTION := Resident Evil: Degeneration
 APP_AUTHOR := Resident Evil compatibility project
 ARCH := -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
 CPPFLAGS := -D__3DS__ -I. -I$(CTRULIB)/include -I$(DEVKITPRO)/portlibs/3ds/include
@@ -25,6 +25,10 @@ $(TARGET).elf: $(OBJECTS)
 	$(CXX) $(LDFLAGS) $^ -L$(CTRULIB)/lib -L$(DEVKITPRO)/portlibs/3ds/lib -lmpg123 -lz -lctru -lm -o $@
 $(BUILD):
 	mkdir -p $@
+$(BUILD)/main_3ds.o: display_toggle_art.h
+display_toggle_art.h: artwork/Switch_to_Wide.png artwork/Switch_to_Standard.png generate_display_toggle.py
+	python3 generate_display_toggle.py
+
 $(BUILD)/%.o: %.cpp | $(BUILD)
 	$(CXX) -MMD -MP $(CXXFLAGS) -c $< -o $@
 $(BUILD)/native_arm.o: native_arm.S | $(BUILD)
