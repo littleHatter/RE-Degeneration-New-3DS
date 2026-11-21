@@ -1,6 +1,6 @@
 # Resident Evil Degeneration — New Nintendo 3DS
 
-![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen1.png "Screenshot")  ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen2.png "Screenshot") 
+![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen1.png "Screenshot")  ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen2.png "Screenshot") ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/screen.png "Screenshot") 
 
 Based on the MGSM compatibility framework and the separate Need for Speed Undercover, Pandemonium and Project Gotham Racing ports.
 
