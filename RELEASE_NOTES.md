@@ -1,3 +1,11 @@
+# Resident Evil: Degeneration v1.2 — Renderer Selection baseline
+
+Promotes the hardware-confirmed Renderer Trial 2 with a graphical touch prompt. Software and Hardware modes both support the live Standard/Wide toggle. Hardware mode applies game fog through the GPU and uses the CPU map at up to 10 Hz. Both modes include the live merchant and treasure marker refresh. This build changes the startup selector using the supplied artwork.
+
+# Resident Evil: Degeneration v1.2 — Map-Enabled baseline
+
+Promotes the exact GPU Map Test 6 executable. The hardware report confirmed the 10 Hz map update rate and comparable gameplay performance with the map open and closed. The installation path, game data recipe and save location are carried forward. Game-scene hardware rendering is a future investigation.
+
 # Resident Evil: Degeneration v1.2
 
 - Hardware-confirmed live switching between Standard (320×240) and Wide (400×240).
