@@ -310,9 +310,41 @@ std::vector<Vertex> LineQuads(GLenum mode, const std::vector<Vertex>& v) {
         for (int k = 0; k < 4; ++k) { q[k].pos[0] += s[k] * nx * q[k].pos[3]; q[k].pos[1] += s[k] * ny * q[k].pos[3]; }
         for (int k : {0, 1, 2, 1, 3, 2}) out.push_back(q[k]);
     };
+    // IwGx outlines a clipped UI box with four independent, one-pixel lines.
+    // Its endpoints are pixel centres, slightly displaced by fixed-point rounding.
+    const bool opaqueBox = mode == GL_LINES && v.size() == 8 && S.scissor_on &&
+        !(S.unit[0].enabled && S.unit[0].bound) && !(S.unit[1].enabled && S.unit[1].bound) &&
+        (!S.blend_on || (S.blend_src == GL_SRC_ALPHA && S.blend_dst == GL_ONE_MINUS_SRC_ALPHA)) &&
+        std::all_of(v.begin(), v.end(), [&](const Vertex& point) {
+            return point.col[3] == 1 && std::equal(point.col, point.col + 4, v.front().col);
+        });
     auto segment = [&](const Vertex& va, const Vertex& vb) {
         Vertex a = clip(va), b = clip(vb);
         if (a.pos[3] <= 0 || b.pos[3] <= 0) return;
+        if (opaqueBox && std::abs(a.pos[3]-b.pos[3]) < 1e-5f &&
+            std::abs(a.pos[2]-b.pos[2]) < 1e-5f) {
+            const auto canonical = [](float coord, float w, float step) {
+                return (coord/w+1)/step;
+            };
+            const auto pixelCenter = [](float v) { return std::floor(v)+0.5f; };
+            const float ax=canonical(a.pos[0],a.pos[3],px), ay=canonical(a.pos[1],a.pos[3],py);
+            const float bx=canonical(b.pos[0],b.pos[3],px), by=canonical(b.pos[1],b.pos[3],py);
+            const bool horizontal=std::abs(ay-by)<0.02f && std::abs(ax-bx)>0.5f;
+            const bool vertical=std::abs(ax-bx)<0.02f && std::abs(ay-by)>0.5f;
+            if ((horizontal || vertical) &&
+                std::abs(ax-pixelCenter(ax))<0.02f && std::abs(bx-pixelCenter(bx))<0.02f &&
+                std::abs(ay-pixelCenter(ay))<0.02f && std::abs(by-pixelCenter(by))<0.02f) {
+                // Cover the whole endpoint pixel; neighbouring sides meet at a full corner.
+                const float capX=horizontal ? (bx>ax?0.5f:-0.5f) : 0;
+                const float capY=vertical ? (by>ay?0.5f:-0.5f) : 0;
+                a.pos[0]=((pixelCenter(ax)-capX)*px-1)*a.pos[3];
+                b.pos[0]=((pixelCenter(bx)+capX)*px-1)*b.pos[3];
+                a.pos[1]=((pixelCenter(ay)-capY)*py-1)*a.pos[3];
+                b.pos[1]=((pixelCenter(by)+capY)*py-1)*b.pos[3];
+                quad(a,b,vertical ? px*0.5f : 0,horizontal ? py*0.5f : 0);
+                return;
+            }
+        }
         float dx = (b.pos[0] / b.pos[3] - a.pos[0] / a.pos[3]) / px, dy = (b.pos[1] / b.pos[3] - a.pos[1] / a.pos[3]) / py;
         const float len = std::sqrt(dx * dx + dy * dy);
         if (len < 1e-6f) { dx = 1; dy = 0; } else { dx /= len; dy /= len; }
