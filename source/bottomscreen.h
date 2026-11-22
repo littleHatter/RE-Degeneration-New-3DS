@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cstring>
 #include <cstdint>
 #include <cstdio>
 #include <string>
@@ -10,7 +11,14 @@ public:
   FILE* f=fopen(path.c_str(),"rb");if(!f)return false;uint32_t h[2]{};
   bool ok=fread(h,4,2,f)==2&&h[0]==0x49554552&&h[1]==1;
   pixels.resize(320*240+17*(83*2+77*2+99+61*2));
-  ok=ok&&fread(pixels.data(),2,pixels.size(),f)==pixels.size()&&fgetc(f)==EOF;fclose(f);if(!ok)pixels.clear();return ok;
+  ok=ok&&fread(pixels.data(),2,pixels.size(),f)==pixels.size()&&fgetc(f)==EOF;fclose(f);
+  if(!ok){pixels.clear();return false;}
+  // Convert the static background to the 3DS framebuffer layout once.
+  std::vector<uint16_t> rotated(320*240);
+  for(unsigned y=0;y<240;++y)for(unsigned x=0;x<320;++x)
+   rotated[x*240+239-y]=pixels[y*320+x];
+  std::memcpy(pixels.data(),rotated.data(),rotated.size()*sizeof(uint16_t));
+  return true;
  }
  bool LoadLoading(const std::string& path){
   FILE* f=fopen(path.c_str(),"rb");if(!f)return false;uint32_t h[4]{};bool ok=fread(h,4,4,f)==4&&h[0]==0x444c4552&&h[1]==1&&h[2]>0&&h[2]<=320&&h[3]>0&&h[3]<=240;
@@ -20,7 +28,7 @@ public:
  bool Ready()const{return !pixels.empty();}
  void Draw(uint16_t* fb,uint32_t prompts)const{
   if(!Ready())return;
-  for(unsigned y=0;y<240;++y)for(unsigned x=0;x<320;++x)fb[x*240+239-y]=pixels[y*320+x];
+  std::memcpy(fb,pixels.data(),320*240*sizeof(uint16_t));
   auto blit=[&](unsigned x,unsigned w,unsigned offset){for(unsigned y=0;y<17;++y)for(unsigned dx=0;dx<w;++dx)fb[(x+dx)*240+239-y]=pixels[offset+y*w+dx];};
   unsigned offset=320*240;
   if(prompts&1)blit(0,83,offset);offset+=83*17;

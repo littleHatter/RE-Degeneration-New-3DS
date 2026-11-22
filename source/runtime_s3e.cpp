@@ -1,3 +1,5 @@
+#include "gles.h"
+void InstallProbeHost();
 #include "runtime_s3e.h"
 #include "resident_ui.h"
 #include "hybrid_trace.h"
@@ -272,19 +274,19 @@ struct S3ERuntime::Impl {
     std::vector<std::pair<U,U>> surfaceCallbacks;
     unsigned surfaceWidth = 320;
     bool surfaceToggleRequested=false;
-    void notifySurface(const std::shared_ptr<std::vector<std::pair<U,U>>>& callbacks, size_t at, U event){
+    void notifySurface(const std::shared_ptr<std::vector<std::pair<U,U>>>& callbacks, size_t at, U event, U returnValue){
         if(at==callbacks->size()){
             heap.Free(event);
-            finish(0);
+            finish(returnValue);
             return;
         }
         const auto [fn,user]=(*callbacks)[at];
-        call(fn,{event,user},[this,callbacks,at,event](U result){
+        call(fn,{event,user},[this,callbacks,at,event,returnValue](U result){
             (void)result;
-            notifySurface(callbacks,at+1,event);
+            notifySurface(callbacks,at+1,event,returnValue);
         });
     }
-    bool switchSurface(){
+    bool switchSurface(U returnValue=0){
         if(!surfaceToggleRequested)return false;
         surfaceToggleRequested=false;
         if(surfaceCallbacks.empty())return false;
@@ -293,10 +295,23 @@ struct S3ERuntime::Impl {
         surfaceWidth=surfaceWidth==320?400:320;
         const U change[]={1,surfaceWidth,240,0,2*surfaceWidth};
         wr(event,change,sizeof(change));
-        notifySurface(std::make_shared<std::vector<std::pair<U,U>>>(surfaceCallbacks),0,event);
+        if(getenv("RE_HW_PROBE")){
+            GLES::Instance().SetDisplay(surfaceWidth,240,surfaceWidth,240,400,240);
+            std::printf("[Hardware] guest surface switched to %u x 240\n",surfaceWidth);
+        }
+        notifySurface(std::make_shared<std::vector<std::pair<U,U>>>(surfaceCallbacks),0,event,returnValue);
         return true;
     }
-    void svc(U index){if((++pollCounter&63u)==0)pollHost();if(quit){finish(0);cpu->Stop();return;}if(index==imports.size()){returned();return;}if(index>=imports.size()){fatal("invalid service index");return;}++calls;const std::string& n=imports[index];if(getenv("PGR_STATE_LIFETIME")){static U previous=0;U state=0;cpu->MemRead(G(0x4a0c4154),&state,4);if(state!=previous){U owner=heap.OwnerOf(state);fprintf(stderr,"[StateOwner] state=%08x owner=%08x size=%u service=%s\n",state,owner,heap.SizeOf(owner),n.c_str());previous=state;}}if(seen.insert(n).second)std::fprintf(stdout,"[S3E] Startup import %llu: %s\n",(unsigned long long)calls,n.c_str());R r{reg(0),reg(1),reg(2),reg(3)};if(getenv("NFS_DIAG")&&(n=="s3eKeyboardGetInt"||n=="s3ePointerGetInt"||n=="s3eMemorySetUserMemMgr"))fprintf(stderr,"[Capability] %s a0=%u a1=%08x a2=%08x\n",n.c_str(),r[0],r[1],r[2]);if(getenv("PAN_IMPORT_TRACE"))fprintf(stderr,"[Import] call=%llu name=%s lr=%08x sp=%08x args=%08x,%08x,%08x,%08x\n",(unsigned long long)calls,n.c_str(),reg(Cpu::REG_LR),reg(Cpu::REG_SP),r[0],r[1],r[2],r[3]);auto done=[this](U x){finish(x);};if(getenv("PGR_AUDIO_TRACE")&&n.rfind("s3eSound",0)==0)fprintf(stderr,"[PGRAudio] %s lr=%08x args=%08x,%08x,%08x,%08x\n",n.c_str(),reg(Cpu::REG_LR),r[0],r[1],r[2],r[3]);
+    void svc(U index){if((++pollCounter&63u)==0)pollHost();if(quit){finish(0);cpu->Stop();return;}if(index==imports.size()){returned();return;}if(index>=imports.size()){fatal("invalid service index");return;}++calls;const std::string& n=imports[index];if(getenv("PGR_STATE_LIFETIME")){static U previous=0;U state=0;cpu->MemRead(G(0x4a0c4154),&state,4);if(state!=previous){U owner=heap.OwnerOf(state);fprintf(stderr,"[StateOwner] state=%08x owner=%08x size=%u service=%s\n",state,owner,heap.SizeOf(owner),n.c_str());previous=state;}}if(seen.insert(n).second)std::fprintf(stdout,"[S3E] Startup import %llu: %s\n",(unsigned long long)calls,n.c_str());R r{reg(0),reg(1),reg(2),reg(3)};if(getenv("NFS_DIAG")&&(n=="s3eKeyboardGetInt"||n=="s3ePointerGetInt"||n=="s3eMemorySetUserMemMgr"))fprintf(stderr,"[Capability] %s a0=%u a1=%08x a2=%08x\n",n.c_str(),r[0],r[1],r[2]);if(getenv("PAN_IMPORT_TRACE"))fprintf(stderr,"[Import] call=%llu name=%s lr=%08x sp=%08x args=%08x,%08x,%08x,%08x\n",(unsigned long long)calls,n.c_str(),reg(Cpu::REG_LR),reg(Cpu::REG_SP),r[0],r[1],r[2],r[3]);if(getenv("RE_HW_PROBE")&&(n.rfind("gl",0)==0||n.rfind("egl",0)==0)){
+        U ret=0;
+        if(GLES::Instance().Handle(n,cpu,r.data(),ret)){
+            if(!quit&&n=="eglSwapBuffers"&&ret&&switchSurface(ret))return;
+            finish(ret);
+            if(quit)cpu->Stop();
+            return;
+        }
+    }
+    auto done=[this](U x){finish(x);};if(getenv("PGR_AUDIO_TRACE")&&n.rfind("s3eSound",0)==0)fprintf(stderr,"[PGRAudio] %s lr=%08x args=%08x,%08x,%08x,%08x\n",n.c_str(),reg(Cpu::REG_LR),r[0],r[1],r[2],r[3]);
         if(n=="s3eMemorySetInt"){fprintf(stderr,"[CapabilityUnavailable] s3eMemorySetInt property=%u value=%u\n",r[0],r[1]);finish(1);return;}
         // This guest uses secondary heap 1 only as a lifecycle token around video.
         // Allocations remain in the existing shared GuestHeap; no raw secondary arena is exposed.
@@ -354,6 +369,8 @@ struct S3ERuntime::Impl {
             finish(ok?0:1);return;
         }
         if(n=="s3eTimerGetMs"){uint64_t now=NfsClockMs()-start;set(1,U(now>>32));finish(U(now));return;}if(n=="s3eTimerGetInt"){finish(r[0]==0?1:0);return;}
+        if(n=="s3eGLGetNativeWindow"&&getenv("RE_HW_PROBE")){finish(1);return;}
+        if(n=="s3eGLGetInt"&&getenv("RE_HW_PROBE")){fprintf(stderr,"[HardwareProbe] s3eGLGetInt(%u)\n",r[0]);finish(r[0]==0?0x110:0);return;}
         if(n=="s3eAccelerometerGetInt"||n=="s3eDeviceGetInt"||n=="s3eGLGetInt"){finish(0);return;}
         if(n=="s3eAccelerometerStart"){finish(1);return;}
         if(n=="s3eAccelerometerStop"){finish(0);return;}
@@ -515,6 +532,37 @@ struct S3ERuntime::Impl {
 S3ERuntime::S3ERuntime(Cpu* c,const std::string&a,const std::string&s):p(new Impl(c,a,s)){}
 S3ERuntime::~S3ERuntime()=default;
 void S3ERuntime::Init(const std::vector<std::string>& i,const std::string& c){p->imports=i;p->parse(c);
+    if(getenv("RE_HW_PROBE")){
+        InstallProbeHost();
+        auto& gl=GLES::Instance();
+        gl.SetGuestAlloc([this](uint32_t size){return p->alloc(size);});
+#ifdef __3DS__
+        gl.SetDisplay(320,240,320,240,400,240);
+#else
+        gl.SetDisplay(320,240,320,240,320,240);
+#endif
+        gl.SetFrameCallback([this](const uint32_t* bgra,int w,int h){
+#ifdef __3DS__
+            if(!bgra){
+                ++p->frames;
+                p->measureFrame();
+                if(p->present)p->present(p->frames,nullptr,p->desired);
+                return;
+            }
+#endif
+            if(!bgra||w<int(p->surfaceWidth)||h!=240)return;
+            ++p->frames;
+            p->measureFrame();
+            const auto width=p->surfaceWidth;
+            std::vector<uint16_t> rgb(width*h);
+            for(unsigned i=0;i<rgb.size();++i){
+                const auto px=bgra[(i/width)*w+(w-width)/2+i%width];
+                rgb[i]=((px>>8)&0xf800)|((px>>5)&0x07e0)|((px>>3)&31);
+            }
+            if(p->present)p->present(p->frames,rgb.data(),p->desired);
+            if(p->limit&&p->frames>=p->limit)p->quit=true;
+        });
+        p->config["gx/rasterisation"]="HW";if(const auto* style=getenv("RE_HW_STYLE"))p->config["resmanager/resbuildstyle"]=style;}
 #ifdef __3DS__
 const bool consoleUi=true;
 #else

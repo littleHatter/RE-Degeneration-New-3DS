@@ -1,3 +1,5 @@
+#include "gl3ds.h"
+#include "live_map.h"
 #include <3ds.h>
 #include <sys/iosupport.h>
 #include <cstdio>
@@ -9,12 +11,15 @@
 #include "runtime_clock.h"
 #include "touch_keypad.h"
 #include "display_toggle_art.h"
+#include "renderer_menu_art.h"
+#include <zlib.h>
 #include "bottomscreen.h"
 
 // Leave application memory available for the guest's separately mapped regions.
 u32 __stacksize__ = 1024 * 1024;
 u32 __ctru_heap_size = 24 * 1024 * 1024;
-u32 __ctru_linear_heap_size = 4 * 1024 * 1024;
+// MGSM uses three 2 MiB vertex arenas in addition to texture and command buffers.
+u32 __ctru_linear_heap_size = 20 * 1024 * 1024;
 extern "C" {
 extern char *fake_heap_start, *fake_heap_end;
 extern u32 __ctru_heap, __ctru_linear_heap;
@@ -72,8 +77,48 @@ void DrawDisplayToggle(u16* screen,bool wide){
 }
 int main() {
     gfxInitDefault(); gfxSet3D(false);
-    gfxSetScreenFormat(GFX_TOP, GSP_BGR8_OES);
+    gfxSetScreenFormat(GFX_TOP, GSP_RGB565_OES);
     consoleInit(GFX_BOTTOM, &console);
+    auto* menuScreen=gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr);
+    uLongf menuBytes=320*240*sizeof(uint16_t);
+    if(uncompress(menuScreen,&menuBytes,kRendererMenuArt,sizeof(kRendererMenuArt))!=Z_OK||
+       menuBytes!=320*240*sizeof(uint16_t)){
+        puts("Unable to load renderer selection artwork.");
+        WaitForExit();
+        gfxExit();
+        return 1;
+    }
+    gfxFlushBuffers();
+    gfxScreenSwapBuffers(GFX_BOTTOM,false);
+    bool selected=false, hardware=false;
+    while(aptMainLoop()){
+        hidScanInput();
+        const auto keys=hidKeysDown();
+        if(keys&KEY_B)break;
+        if(keys&KEY_TOUCH){
+            touchPosition point{};
+            hidTouchRead(&point);
+            if(point.py>=120&&point.py<240&&point.px<320){
+                hardware=point.px>=160;
+                selected=true;
+                break;
+            }
+        }
+        gspWaitForVBlank();
+    }
+    if(!selected){gfxExit();return 0;}
+    while(aptMainLoop()){
+        hidScanInput();
+        if(!(hidKeysHeld()&KEY_TOUCH))break;
+        gspWaitForVBlank();
+    }
+    if(!aptMainLoop()){gfxExit();return 0;}
+    consoleClear();
+    if(hardware){
+        gfxSetScreenFormat(GFX_TOP,GSP_BGR8_OES);
+        GL3DS::SetStereo(false);
+        setenv("RE_HW_PROBE","1",1);
+    }else unsetenv("RE_HW_PROBE");
     // Draw complete artwork off-screen; never clear the displayed icon strip.
     gfxSetDoubleBuffering(GFX_BOTTOM,true);
     std::error_code ec;
@@ -88,7 +133,8 @@ int main() {
     bottom.LoadLoading(std::string(ROOT)+"/ui/loading.bin");
     if(!bottom.Load(std::string(ROOT)+"/ui/bottomscreen.bin"))puts("[ConsoleUI] artwork missing");
     else {bottomArtVisible=true;bottom.Draw(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)),0);bottom.DrawLoading(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)));gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();}
-    puts("Resident Evil Degeneration\nNew 3DS baseline 1.1\n");
+    puts("Resident Evil Degeneration\nNew 3DS v1.2 - renderer selection baseline\n");
+    printf("[Renderer] %s\n",hardware?"Hardware GLES":"Software");
     printf("Data: %s/game\n", ROOT);
     setenv("RE_HYBRID_RESOURCE", "common/environment.group.bin", 1);
     setenv("RE_HYBRID_BUNDLE", "staffarea", 1);
@@ -118,6 +164,8 @@ int main() {
                 S3ERuntime runtime(cpu.get(), assets, std::string(ROOT)+"/user");
                 runtime.Init(binary.imports, binary.config);
                 Audio3DS audio; audio.Init();
+                LiveMap liveMap(*cpu,binary,!hardware);
+                if(hardware)puts("[LiveMap] 10 Hz CPU rasterizer selected for hardware renderer");
                 TouchKeypad touchKeypad;
                 if(!touchKeypad.Load(std::string(ROOT)+"/ui/keypad_ui.bin"))puts("[KeypadUI] artwork missing or invalid; touch UI unavailable");
                 else puts("[KeypadUI] artwork ready");
@@ -133,6 +181,9 @@ int main() {
                     if(runtime.Frames()&&bottom.Ready()&&!runtime.KeypadOpen()&&(hidKeysDown()&KEY_TOUCH)
                        &&point.px<kToggleWidth&&point.py>=kToggleTop&&point.py<240)
                         runtime.RequestDisplayToggle();
+                    if(runtime.Frames()&&bottom.Ready()&&!runtime.KeypadOpen()&&(hidKeysDown()&KEY_TOUCH)
+                       &&point.px>=288&&point.px<320&&point.py>=212&&point.py<240)
+                        liveMap.Toggle();
                     // Select intentionally has no action.
                     keys[204] = held & (KEY_DUP|KEY_CPAD_UP);
                     keys[205] = held & (KEY_DDOWN|KEY_CPAD_DOWN);
@@ -144,31 +195,78 @@ int main() {
                     keys[209] = held & KEY_X;
                     keys[210] = held & (KEY_B|KEY_START);
                 });
+                uint32_t previousPrompts=UINT32_MAX;
+                unsigned previousWidth=0;
+                bool previousKeypad=false;
+                struct FrameTiming { unsigned count=0, slow=0; uint64_t total=0; };
+                FrameTiming timings[2];
+                uint64_t lastTop=0;
+                bool lastMapOpen=false;
                 runtime.SetFrameCallback([&](uint32_t frame, const uint16_t* pixels,
                                              S3ERuntime::Keys& keys) {
-                    u8* screen = gfxGetFramebuffer(GFX_TOP, GFX_LEFT, nullptr, nullptr);
                     const unsigned width=runtime.SurfaceWidth();
-                    const unsigned left=(400-width)/2;
-                    if(left)memset(screen, 0, 400*240*3);
-                    for (int y=0; y<240; ++y) for (unsigned x=0; x<width; ++x) {
-                        u16 p = pixels[y*width+x];
-                        u8* out = screen+((x+left)*240+239-y)*3;
-                        out[0]=(p&31)*255/31; out[1]=((p>>5)&63)*255/63;
-                        out[2]=((p>>11)&31)*255/31;
+                    if(!hardware&&pixels){
+                        auto* screen=reinterpret_cast<uint16_t*>(gfxGetFramebuffer(GFX_TOP,GFX_LEFT,nullptr,nullptr));
+                        const unsigned left=(400-width)/2;
+                        for(unsigned x=0;x<left;++x){
+                            std::fill_n(screen+x*240,240,0);
+                            std::fill_n(screen+(399-x)*240,240,0);
+                        }
+                        // Tile the RGB565 transpose to keep the guest rows and LCD columns in cache.
+                        for(unsigned y=0;y<240;y+=8)for(unsigned x=0;x<width;x+=8)
+                            for(unsigned dx=0;dx<8;++dx)for(unsigned dy=0;dy<8;++dy)
+                                screen[(x+dx+left)*240+239-y-dy]=pixels[(y+dy)*width+x+dx];
+                        GSPGPU_FlushDataCache(screen,400*240*sizeof(uint16_t));
+                        gfxScreenSwapBuffers(GFX_TOP,false);
                     }
-                    uint32_t prompts=runtime.TakeConsolePrompts();
-                    if(runtime.KeypadOpen())prompts=0;
-                    bool show=runtime.KeypadOpen()&&touchKeypad.Ready();
-                    if(show){bottomArtVisible=true;touchKeypad.Draw(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)));}
-                    else if(bottom.Ready()){
-                        bottomArtVisible=true;
-                        auto* bottomFb=reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr));
-                        bottom.Draw(bottomFb,prompts);
-                        if(!runtime.KeypadOpen())DrawDisplayToggle(bottomFb,width==400);
+                    const auto topTime=NfsClockMs();
+                    const bool mapOpen=liveMap.IsOpen()&&!runtime.KeypadOpen();
+                    if(lastTop&&mapOpen==lastMapOpen){
+                        auto& timing=timings[mapOpen];
+                        const auto gap=topTime-lastTop;
+                        ++timing.count;
+                        timing.total+=gap;
+                        timing.slow+=gap>=25;
                     }
-                    gfxFlushBuffers(); gfxSwapBuffers(); gspWaitForVBlank();
+                    lastTop=topTime;
+                    lastMapOpen=mapOpen;
+
+                    const bool keypad=runtime.KeypadOpen();
+                    const uint32_t prompts=runtime.TakeConsolePrompts();
+                    if(keypad)liveMap.Suspend();
+                    const bool mapChanged=!keypad&&bottom.Ready()&&liveMap.Update(NfsClockMs());
+                    if(keypad||keypad!=previousKeypad||prompts!=previousPrompts||width!=previousWidth||mapChanged){
+                        auto* bottomFb=reinterpret_cast<uint16_t*>(
+                            gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr));
+                        if(keypad&&touchKeypad.Ready()){
+                            bottomArtVisible=true;
+                            touchKeypad.Draw(bottomFb);
+                        }else if(bottom.Ready()){
+                            bottomArtVisible=true;
+                            bottom.Draw(bottomFb,keypad?0:prompts);
+                            if(!keypad){
+                                DrawDisplayToggle(bottomFb,width==400);
+                                liveMap.Draw(bottomFb);
+                            }
+                        }
+                        if(bottomArtVisible){
+                            GSPGPU_FlushDataCache(bottomFb,320*240*sizeof(uint16_t));
+                            gfxScreenSwapBuffers(GFX_BOTTOM,false);
+                        }
+                        previousKeypad=keypad;
+                        previousPrompts=prompts;
+                        previousWidth=width;
+                    }
+                    if(!hardware)gspWaitForVBlank();
                 });
                 result = runtime.Run(G(binary.entry_point));
+                if(hardware)GL3DS::Shutdown();
+                liveMap.LogPerformance();
+                for(unsigned i=0;i<2;++i){
+                    const auto& timing=timings[i];
+                    if(timing.count)std::printf("[Timing] map %s: %u frames, %u gaps >=25 ms, %.2f ms mean\n",
+                        i?"open":"closed",timing.count,timing.slow,double(timing.total)/timing.count);
+                }
             }
         }
     }
