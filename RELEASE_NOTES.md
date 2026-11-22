@@ -1,5 +1,7 @@
 # Resident Evil: Degeneration v1.2 — Renderer Selection baseline
 
+The hardware-confirmed Health Bar Outline Test is now the baseline executable. The hardware renderer aligns one-pixel health segment outlines to the pixel grid so the corners meet in gameplay and in the pause menu.
+
 Promotes the hardware-confirmed Renderer Trial 2 with a graphical touch prompt. Software and Hardware modes both support the live Standard/Wide toggle. Hardware mode applies game fog through the GPU and uses the CPU map at up to 10 Hz. Both modes include the live merchant and treasure marker refresh. This build changes the startup selector using the supplied artwork.
 
 # Resident Evil: Degeneration v1.2 — Map-Enabled baseline
