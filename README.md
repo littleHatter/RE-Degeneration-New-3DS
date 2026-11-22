@@ -1,4 +1,4 @@
-# Resident Evil Degeneration — New Nintendo 3DS
+# Resident Evil Degeneration - New Nintendo 3DS
 
 ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen1.png "Screenshot")  ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen2.png "Screenshot") ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/screen.png "Screenshot") ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/hardware_screen.png "Screenshot") 
 
