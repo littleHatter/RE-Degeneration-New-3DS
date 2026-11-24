@@ -133,7 +133,7 @@ int main() {
     bottom.LoadLoading(std::string(ROOT)+"/ui/loading.bin");
     if(!bottom.Load(std::string(ROOT)+"/ui/bottomscreen.bin"))puts("[ConsoleUI] artwork missing");
     else {bottomArtVisible=true;bottom.Draw(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)),0);bottom.DrawLoading(reinterpret_cast<u16*>(gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,nullptr,nullptr)));gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();}
-    puts("Resident Evil Degeneration\nNew 3DS v1.2 - renderer selection baseline\n");
+    puts("Resident Evil Degeneration\nNew 3DS v1.3\n");
     printf("[Renderer] %s\n",hardware?"Hardware GLES":"Software");
     printf("Data: %s/game\n", ROOT);
     setenv("RE_HYBRID_RESOURCE", "common/environment.group.bin", 1);
@@ -270,8 +270,11 @@ int main() {
             }
         }
     }
-    ShowLogOnScreen();
-    printf("\nRuntime ended: %d\n", result); WaitForExit();
+    if (result != 0) {
+        ShowLogOnScreen();
+        printf("\nRuntime ended: %d\n", result);
+        WaitForExit();
+    }
     fflush(stdout); fflush(stderr);
     devoptab_list[STD_OUT] = consoleOutput; devoptab_list[STD_ERR] = consoleOutput;
     if (logFile) fclose(logFile);
