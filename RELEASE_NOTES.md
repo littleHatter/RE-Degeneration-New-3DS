@@ -1,3 +1,7 @@
+# Resident Evil: Degeneration v1.3
+
+Normal exits return directly to the launcher. Runtime errors still show diagnostics.
+
 # Resident Evil: Degeneration v1.2 — Renderer Selection baseline
 
 The hardware-confirmed Health Bar Outline Test is now the baseline executable. The hardware renderer aligns one-pixel health segment outlines to the pixel grid so the corners meet in gameplay and in the pause menu.

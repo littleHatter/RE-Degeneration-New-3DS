@@ -1,54 +1,81 @@
-# Resident Evil Degeneration - New Nintendo 3DS
+# Resident Evil: Degeneration for New Nintendo 3DS
 
-![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen1.png "Screenshot")  ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/Screen2.png "Screenshot") ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/screen.png "Screenshot") ![alt text](https://github.com/littleHatter/RE-Degeneration-New-3DS/blob/main/hardware_screen.png "Screenshot") 
+**Version 1.3**
 
-Based on the MGSM compatibility framework and the separate Need for Speed Undercover, Pandemonium and Project Gotham Racing ports.
+A native New Nintendo 3DS compatibility port derived from [LeithSilver's MGSM project](https://github.com/LeithSilver/mgsm), with the separately developed Undercover, Pandemonium and Project Gotham Racing runtime improvements.
 
-This is a hybridisation of the N-Gage 2.0, BREW and iOS versions of Resident Evil Degeneration, using assets converted from the iOS and BREW versions to cover the gaps made by the N-Gage 2.0's XOR-masked bit manipulation.
+The full BREW campaign trial was completed on New 3DS hardware from start to finish without errors. Version 1.1 uses those exact game-data files, returning the application to its original name and SD directory.
 
-It is likely to not be perfectly identical to either version, but the whole game is completable from start to finish without major issue.
+## Requirements and installation
 
-## Installation
+Requires a New Nintendo 3DS, New 3DS XL or New 2DS XL with the Homebrew Launcher.
 
-Requires a **New Nintendo 3DS / New 3DS XL / New 2DS XL** with the Homebrew Launcher. Merge the included `3ds` folder into the SD card root. Launch Resident Evil Degeneration. Preserve `3ds/res_degene/user` when updating: it contains your saves. No saves are included.
+* **Complete installation:** extract the archive and merge its `3ds` folder into the SD card root.
+* **Installation without game data:** follow [PREPARING_GAME_DATA.md](PREPARING_GAME_DATA.md), run the supplied Python script with your matching input copies, then merge the resulting `3ds` folder into the SD card root.
+* **Source:** the GitHub archive includes build source, preparation/conversion tools and prepared UI artwork. It does not include complete original game files. Build instructions are below.
 
-Releases requires your own matching N-Gage game package, BREW archive and iOS donor copy; see PREPARING_GAME_DATA.md. The GitHub source package contains compatibility source, artwork and restoration patches, with no complete game data files.
+Launch **Resident Evil: Degeneration**. The executable is `3ds/res_degene/res_degene.3dsx` and data lives at `sdmc:/3ds/res_degene/`. Both launcher metadata fields read Resident Evil: Degeneration.
 
-Consider using the automated extractor for preparing your game files:
-https://github.com/littleHatter/Airplay-New3DS-Game-Data-Preparation-Tool
+When updating, preserve `3ds/res_degene/user/`, which contains saves and settings. No saves are included. The earlier trial directories are not read automatically. To continue using a save made in the completed campaign trial, copy its `user` folder from `3ds/res_degene_brew_campaign/` into `3ds/res_degene/` after backing up any existing destination save folder. Do not copy the old trial executable or entry scripts.
+
+## Renderer selection
+
+At launch, tap **No** at the lower left for Software or **Yes** at the lower right for Hardware acceleration. Press B to exit the prompt. Relaunch to change the rendering mode.
+
+## Live display toggle
+
+Tap the bottom-left touchscreen graphic to switch between Standard (320×240)
+and Wide (400×240). Each launch starts in Standard. The toggle is hidden and
+inactive while the keypad is open.
+
+## Bottom-screen map
+
+Tap the bottom-right map button to open or close the map. The keypad takes priority while it is open. The map updates at up to 10 Hz and retains the last completed image between updates. Software mode uses the GPU for map geometry with a software fallback. In Hardware mode the top-screen game renderer uses the GPU and the map uses the 10 Hz CPU rasterizer. The map refreshes merchant and treasure markers during gameplay.
+
+## What changed in v1.1
+
+The 12 reconstructed main scene groups now use the BREW version's authored scene objects, vertex colours and shared-object template layout. These replace the previous lightmap-to-vertex-colour approximations. Native N-Gage model geometry is reused where already compatible. Baggage and the initial VIP scene remain on their original intact assets.
+
+All 329 gameplay-component roots and their tested component data/root transforms are preserved. Scripts, progression fixes, story resources, audio, controls, touch keypad and presentation remain unchanged. Six referenced baseline-only entities are retained for compatibility: four visual objects and two nonvisual entities. Their identities and reasons are documented in `validation/conversion_checks.json` in the source archive.
+
+This release does not copy the BREW executable or replace game scripts wholesale. The tested hybrid retains compatibility resources from the iOS donor, so preparing your own data still needs that donor as well as N-Gage and BREW input copies.
 
 ## Controls
 
-| Input | Action |
+| 3DS input | Action |
 | --- | --- |
-| D-pad / Circle Pad | Move |
+| D-pad / Circle Pad | Movement |
 | A or R | Confirm / action / fire |
-| Y | Reload |
+| Y | Reload weapon |
 | L | Use knife / zoom |
 | X | Left softkey / aim / exit aim |
-| B | Right softkey / back |
-| Start | Pause (existing right softkey action) |
+| B | Right softkey / Back |
+| Start | Pause |
 | Select | No action |
-| Touchscreen keypad | Phone digits, star and hash when the game opens its keypad menu |
+| Touchscreen | Phone keypad when the game opens its keypad screen |
 
-## Status and diagnostics
+The lower screen displays contextual A/A2, B/B2, Start and X1/X2 prompts. The original top-screen softkeys are suppressed, and the touch keypad takes priority over lower-screen artwork. Lift and tap again to repeat a digit. X clears the keypad; B returns. The opening-door action graphic displays A. The startup loading indicator disappears on the first game-rendered frame. HOME provides normal application exit.
 
-The full campaign has been completed on a New 3DS without a crash. Restored lighting approximates the iOS version and is not an exact reproduction of every original surface.
+A normal game exit returns directly to the launcher.
 
-File diagnostics are retained at `sdmc:/3ds/res_degene/res_degene.log` in case of a crash. If a crash occurs and you wish to retain the log to submit with an issue, copy that file before restarting, because it'll be overwritten.
+## Diagnostics
 
-## Build from source
+File diagnostics remain at `sdmc:/3ds/res_degene/res_degene.log`. If reporting a fault, copy the log before relaunching and retain any system crash dump. Include the chapter/area and the action that triggered the issue. The lower screen normally shows artwork rather than diagnostics.
 
-The source archive uses `source/` for the runtime and `asset_tools/` for the conversion tools. Replace the repository contents with this archive's tree when updating a fork; avoid retaining older duplicate source files at the root.
+## Build
 
-Build with devkitARM, libctru, and the 3DS mpg123 and zlib libraries:
+Install devkitARM, libctru, picasso, bin2s and the 3DS citro2d, citro3d, mpg123 and zlib libraries, then run:
 
 ```sh
 make -C source
 ```
 
-The output is `source/res_degene.3dsx`. Copy it to `3ds/res_degene/`. The supplied application artwork can be regenerated with Pillow and NumPy using `asset_tools/build_bottomscreen.py` and `asset_tools/build_touch_keypad.py`. Those scripts expect the archive's directory structure. Preparing game data needs Python 3.10+ only; there are no Python packages or network downloads required for that step.
+Copy `source/res_degene.3dsx` and `source/res_degene.smdh` to `3ds/res_degene/`. The packaged `ui` folder is also required. The source package provides ready-to-use UI binaries; regeneration uses Pillow and NumPy via `asset_tools/build_bottomscreen.py` and `asset_tools/build_touch_keypad.py`.
 
-For desktop diagnostics, install Unicorn 2.1.4 and run `python source/build_desktop.py`. Set `RE_CONSOLE_UI=1` to enable console prompt replacement on desktop. Offline lighting tools also use NumPy and SciPy; normal installation does not run those tools. `validation/` in the source package contains selected checks and evidence.
+Game preparation uses **Python 3.10+ and the standard library only**, with no downloads. The desktop diagnostic probe additionally uses Unicorn 2.1.4: `python source/build_desktop.py`. `RE_CONSOLE_UI=1` enables the console display adaptations on desktop. Offline historical lighting tools use NumPy/SciPy; normal preparation does not run those tools.
 
-The inherited GPL license and third-party notices are included. Original game content and supplied presentation artwork retain their respective rights; the source license does not relicense them.
+`preparation/build_recipe.py` regenerates the verified copy/patch recipe from prepared data and the three original source archives. `conversion/restore_campaign_brew.py` records the scene-conversion process from prepared **v1.0** data; its use is for maintenance, not the normal v1.1 installation path. See `conversion/README.md`.
+
+## Credits and licensing
+
+The inherited GPL license is included in LICENSE; dependency notices are in THIRD_PARTY.md and the bundled third_party directories. Original game content and supplied presentation artwork retain their respective rights and are separate from the compatibility source license. No complete game data files are included in the source or extract-your-own installation packages.

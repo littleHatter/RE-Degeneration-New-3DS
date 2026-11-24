@@ -1,4 +1,4 @@
-# Preparing Resident Evil: Degeneration game data for v1.2
+# Preparing Resident Evil: Degeneration game data for v1.3
 
 Use **Python 3.10 or later**. The supplied script uses the standard library only and does not download anything.
 

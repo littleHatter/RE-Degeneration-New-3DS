@@ -1,1 +1,1 @@
-Matching source is in Resident_Evil_New3DS_v1.2_Renderer_Baseline_GitHub_Source.zip.
+Matching source is in Resident_Evil_New3DS_v1.3_GitHub_Source.zip.
